@@ -12,58 +12,51 @@ public class PeopleInfection : MainBehaviour
     protected override void Update()
     {
         base.Update();
-        //this.Infection();
+        this.Infection();
     }
     protected override void LoadComponents()
     {
         base.LoadComponents();
         LoadPeopleCtrl();
     }
+    // Load PeopleCtrl in inspector
     protected virtual void LoadPeopleCtrl()
     {
         if (peopleCtrl != null) return;
         peopleCtrl = GetComponent<PeopleCtrl>();
         Debug.Log(transform.name + ": LoadPeopleCtrl");
     }
-    //float ift = 100f;
 
-    //void Infection()
-    //{
-    //    if (this.peopleCtrl.peopleHealthInfo.virusInfo.virusName == VirusName.noVirus) return;
-    //    var objs = Physics.OverlapSphere(transform.position + new Vector3(0f, 1.5f, 0f), infectionRadius, WhatIsInfection);
-    //    foreach (Collider col in objs)
-    //    {
-    //        if (col.gameObject.Equals(this.gameObject)) return;
-            
-    //        if (Time.time > currentDelayTime)
-    //        {
-    //            currentDelayTime = Time.time + infectionDelayTime;
-                
-    //            ift = Random.Range(0, 100f);
-                
-    //        }
-    //        PeopleCtrl peopleCtrls = col.GetComponent<PeopleCtrl>();
-    //        if (peopleCtrls != null)
-    //        {
-    //            if (peopleCtrls.peopleHealthInfo.virusInfo.virusName != VirusName.noVirus) return;
-    //            if (ift < this.peopleCtrl.peopleHealthInfo.virusInfo.infectionRate)
-    //            {
-    //                peopleCtrls.peopleHealthInfo.virusInfo.virusName = this.peopleCtrl.peopleHealthInfo.virusInfo.virusName;
-    //                Debug.Log(peopleCtrls.transform.name + " is infected virus "+ peopleCtrls.peopleHealthInfo.virusInfo.virusName);
-    //            }
-
-
-    //        }
-    //    }
+    protected void Infection()
+    {
+        // return when this object no virus
+        if (this.peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus) return;
         
-    //}
-    //void Infected(float infectionRate)
-    //{
-    //    if (infectionRate < peopleCtrl.peopleHealthInfo.virusInfo.infectionRate)
-    //    {
+        // get all another object in OverlapSphere
+        Collider[] objs = Physics.OverlapSphere(transform.position + new Vector3(0f, 1.5f, 0f), infectionRadius, WhatIsInfection);
+        if (Time.time > currentDelayTime)
+        {
+            currentDelayTime = Time.time + infectionDelayTime;
 
-    //    }
-    //}
+            InfectionToObject(objs);
+        }
+
+    }
+    protected void InfectionToObject(Collider[] objs)
+    {
+        foreach (Collider col1 in objs)
+        {
+            PeopleCtrl anotherPeopleCtrl = col1.GetComponent<PeopleCtrl>();
+            if (anotherPeopleCtrl != null)
+            {
+                if (anotherPeopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus)
+                {
+                    Debug.LogWarning("Infection");
+                    anotherPeopleCtrl.peopleInfeted.Infected(this.peopleCtrl.peopleHealthInfo.InfectionRate, this.peopleCtrl.peopleHealthInfo.VirusName);
+                }
+            }
+        }
+    }
 
     void OnDrawGizmosSelected()
     {
