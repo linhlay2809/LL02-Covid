@@ -38,11 +38,11 @@ public class PeopleInfection : MainBehaviour
         {
             currentDelayTime = Time.time + infectionDelayTime;
 
-            InfectionToObject(objs);
+            InfectionToPeople(objs);
         }
 
     }
-    protected void InfectionToObject(Collider[] objs)
+    protected void InfectionToPeople(Collider[] objs)
     {
         foreach (Collider col1 in objs)
         {
