@@ -395,7 +395,11 @@ MonoBehaviour:
   virusInfo:
     virusName: 0
     infectionRate: 0
+  maxInfectionRate: 0
   deathRate: 0
+  timeToDeath: 0
+  deathRateDelayTime: 1
+  isInfected: 0
 --- !u!114 &8812591229695788488
 MonoBehaviour:
   m_ObjectHideFlags: 0

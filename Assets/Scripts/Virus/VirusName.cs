@@ -6,9 +6,12 @@ public enum VirusName
     noVirus = 0,
 
     // Người nhiễm bệnh
-    deltaVirus = 1,
-    alphaVirus = 2,
-    betaVirus = 3,
-    gammaVirus  = 4
+    /// <summary>
+    /// Giá trị int tương ứng sử dụng làm tỷ lệ lây nhiễm tối đa
+    /// </summary>
+    deltaVirus = 7,
+    alphaVirus = 8,
+    betaVirus = 9,
+    gammaVirus  = 10
 }
     

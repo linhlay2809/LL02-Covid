@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,6 @@ public class PeopleInfection : MainBehaviour
     protected float currentDelayTime;
     protected override void Update()
     {
-        base.Update();
         this.Infection();
     }
     protected override void LoadComponents()
@@ -19,7 +18,7 @@ public class PeopleInfection : MainBehaviour
         base.LoadComponents();
         LoadPeopleCtrl();
     }
-    // Load PeopleCtrl in inspector
+    // Load PeopleCtrl trên inspector
     protected virtual void LoadPeopleCtrl()
     {
         if (peopleCtrl != null) return;
@@ -29,10 +28,10 @@ public class PeopleInfection : MainBehaviour
 
     protected void Infection()
     {
-        // return when this object no virus
+        // return khi this object không bị nhiễm virus
         if (this.peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus) return;
-        
-        // get all another object in OverlapSphere
+
+        // lấy tất cả các object có layer = WhatIsInfection đang bên trong OverlapSphere
         Collider[] objs = Physics.OverlapSphere(transform.position + new Vector3(0f, 1.5f, 0f), infectionRadius, WhatIsInfection);
         if (Time.time > currentDelayTime)
         {
@@ -42,6 +41,7 @@ public class PeopleInfection : MainBehaviour
         }
 
     }
+    // Lây nhiễm cho object khác
     protected void InfectionToPeople(Collider[] objs)
     {
         foreach (Collider col1 in objs)
@@ -51,7 +51,7 @@ public class PeopleInfection : MainBehaviour
             {
                 if (anotherPeopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus)
                 {
-                    Debug.LogWarning("Infection");
+                    //Debug.LogWarning("Infection");
                     anotherPeopleCtrl.peopleInfeted.Infected(this.peopleCtrl.peopleHealthInfo.InfectionRate, this.peopleCtrl.peopleHealthInfo.VirusName);
                 }
             }

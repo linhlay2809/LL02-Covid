@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MainBehaviour
 {
-    [SerializeField] protected GameObject camera;
     private Rigidbody _rigidbodyPlayer;
     private Animator _anim;
     private Transform _groundChecker;
@@ -41,9 +40,6 @@ public class PlayerController : MainBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
         MovementAnimator(horizontalInput, verticalInput);
-
-        //if (_inputs != Vector3.zero)
-        //    transform.forward = _inputs;
 
         //if (Input.GetButtonDown("Jump") && _isGrounded)
         //{
