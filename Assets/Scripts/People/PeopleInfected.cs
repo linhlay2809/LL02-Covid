@@ -5,6 +5,8 @@ using UnityEngine;
 public class PeopleInfected : MainBehaviour
 {
     public PeopleCtrl peopleCtrl;
+    [SerializeField] protected List<VirusInfo> virusInfo;
+    protected List<int> maxInfectionRates = new List<int>() { 0, 7, 8, 9, 10};
 
     protected override void LoadComponents()
     {
@@ -26,11 +28,11 @@ public class PeopleInfected : MainBehaviour
         float ratio = Random.Range(0f, 100f);
         if (ratio < infectionRate) 
         {
-            this.peopleCtrl.peopleHealthInfo.virusInfo.virusName = virusName;
-            this.peopleCtrl.peopleHealthInfo.SetMaxInfectionRate((int)virusName);
-            this.peopleCtrl.peopleHealthInfo.SetIsInfected(true);
-            Debug.Log(transform.name + " is infected virus "+ virusName);
-            Debug.LogWarning(ratio);
+            Debug.LogWarning((int)virusName);
+            this.peopleCtrl.peopleHealthInfo.virusName = virusName;
+            this.peopleCtrl.peopleHealthInfo.SetMaxInfectionRate(PeopleManager.Instance.GetMaxIR((int)virusName) );
+            //this.peopleCtrl.peopleHealthInfo.SetIsInfected(true);
+            Debug.LogWarning(transform.name + " is infected virus "+ virusName);
         }
     }
 }

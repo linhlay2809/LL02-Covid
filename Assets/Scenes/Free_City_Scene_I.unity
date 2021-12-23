@@ -2394,6 +2394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 380032555}
+  - component: {fileID: 380032556}
   m_Layer: 0
   m_Name: PeopleManager
   m_TagString: Untagged
@@ -2421,6 +2422,29 @@ Transform:
   m_Father: {fileID: 2040402895}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &380032556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380032554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35b44a3c2023e84dbfa6f7d1eef1b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusInfos:
+  - virusName: 0
+    maxInfectionRate: 0
+  - virusName: 1
+    maxInfectionRate: 7.2
+  - virusName: 2
+    maxInfectionRate: 8
+  - virusName: 3
+    maxInfectionRate: 9
+  - virusName: 4
+    maxInfectionRate: 10
 --- !u!1001 &386021593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4092,8 +4116,16 @@ PrefabInstance:
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: virusName
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: isInfected
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: infectionRate
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: virusInfo.name
@@ -4101,7 +4133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: virusInfo.virusName
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: virusInfo.infectionRate
@@ -7232,6 +7264,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: timeToDeath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: beingTreated
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11415,9 +11451,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 380032555}
     m_Modifications:
+    - target: {fileID: 5270939244016285753, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5270939244021509875, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_Name
       value: People3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5270939244021598839, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5270939244021871315, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_RootOrder
@@ -11461,6 +11505,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5270939244021871315, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: isInfected
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11533,8 +11581,16 @@ PrefabInstance:
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: virusName
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: isInfected
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: infectionRate
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: virusInfo.name
@@ -11542,7 +11598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: virusInfo.virusName
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: virusInfo.infectionRate
@@ -13008,6 +13064,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5270939244021871315, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: isInfected
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
