@@ -7,6 +7,7 @@ public class PeopleCtrl : MainBehaviour
     public PeopleHealthInfo peopleHealthInfo;
     public PeopleInfection peopleInfection;
     public PeopleInfected peopleInfeted;
+    public PeopleTreated peopleTreated;
 
     protected override void LoadComponents()
     {
@@ -14,6 +15,7 @@ public class PeopleCtrl : MainBehaviour
         LoadPeopleHealthInfo();
         LoadPeopleInfection();
         LoadPeopleInfected();
+        LoadPeopleTreated();
     }
 
     protected virtual void LoadPeopleHealthInfo()
@@ -33,5 +35,11 @@ public class PeopleCtrl : MainBehaviour
         if (peopleInfeted != null) return;
         this.peopleInfeted = GetComponent<PeopleInfected>();
         Debug.Log(transform.name + ": LoadPeopleInfected");
+    }
+    protected virtual void LoadPeopleTreated()
+    {
+        if (peopleTreated != null) return;
+        this.peopleTreated = GetComponent<PeopleTreated>();
+        Debug.Log(transform.name + ": LoadPeopleTreated");
     }
 }

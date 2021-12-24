@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 9081241033314789467}
   - component: {fileID: 8812591229695788488}
   - component: {fileID: -2360075565942793283}
+  - component: {fileID: 4621237190311984460}
   m_Layer: 6
   m_Name: People1
   m_TagString: Untagged
@@ -380,6 +381,7 @@ MonoBehaviour:
   peopleHealthInfo: {fileID: 9081241033314789467}
   peopleInfection: {fileID: 8812591229695788488}
   peopleInfeted: {fileID: -2360075565942793283}
+  peopleTreated: {fileID: 4621237190311984460}
 --- !u!114 &9081241033314789467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,14 +394,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f59131378b855d4594adcb3458638a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  virusInfo:
-    virusName: 0
-    infectionRate: 0
+  virusName: 2
+  infectionRate: 8
   maxInfectionRate: 0
   deathRate: 0
   timeToDeath: 0
-  deathRateDelayTime: 1
-  isInfected: 0
+  beingTreated: 0
 --- !u!114 &8812591229695788488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,11 +413,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   peopleCtrl: {fileID: 6688339202542525907}
-  infectionRadius: 0
+  infectionRadius: 3
   WhatIsInfection:
     serializedVersion: 2
-    m_Bits: 0
-  infectionDelayTime: 0
+    m_Bits: 64
+  infectionDelayTime: 1
 --- !u!114 &-2360075565942793283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,6 +428,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dc63a42c0bf77c46aae875207c25ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  peopleCtrl: {fileID: 6688339202542525907}
+--- !u!114 &4621237190311984460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270939244021509875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146c12ed106175b448c70025fb9c4829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   peopleCtrl: {fileID: 6688339202542525907}

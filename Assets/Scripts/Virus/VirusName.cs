@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 public enum VirusName
 {
     // Người bình thường

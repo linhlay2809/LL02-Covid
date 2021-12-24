@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PeopleHealthInfo : MainBehaviour
 {
-    public VirusName virusName;
-
+    [SerializeField] protected VirusName virusName;
+    [Tooltip("Tỷ lệ lây nhiễm")]
     [SerializeField] protected float infectionRate;
     [Tooltip("Tỷ lệ lây nhiễm tối đa")]
     [SerializeField] protected float maxInfectionRate;
@@ -50,6 +50,11 @@ public class PeopleHealthInfo : MainBehaviour
             this.ReduceInfectionRate();
         }
 
+    }
+
+    public bool GetBeTreated()
+    {
+        return this.beingTreated;
     }
 
     public void SetRateToDeath(float timeToDeath)
