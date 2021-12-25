@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +15,7 @@ public class DoctorInteraction : MainBehaviour
         LoadDoctorCtrl();
     }
 
-    // Load PeopleCtrl tr�n inspector
+    // Load PeopleCtrl trên inspector
     protected virtual void LoadDoctorCtrl()
     {
         if (doctorCtrl != null) return;
@@ -38,8 +38,8 @@ public class DoctorInteraction : MainBehaviour
         layerMask = ~layerMask;
 
         RaycastHit hit;
-        Vector3 hitPos = transform.position + new Vector3(0f, 1.5f, 0f);
-        // Does the ray intersect any objects excluding the player layer
+        Vector3 hitPos = transform.position + new Vector3(0f, 1.5f, 0f); // Vị trí bắt đầu RayCast
+
         if (Physics.Raycast(hitPos, transform.TransformDirection(Vector3.forward), out hit, 2f, layerMask))
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -48,7 +48,13 @@ public class DoctorInteraction : MainBehaviour
                 if (peopleCtrl != null)
                 {
                     if (peopleCtrl.peopleHealthInfo.GetBeTreated()) return;
-                    peopleCtrl.peopleTreated.BeTreated();
+                    int medicineIndex = (int)peopleCtrl.peopleHealthInfo.VirusName;
+                    if (this.doctorCtrl.doctorHealing.GetMedicineInfo(medicineIndex).quantily > 0)
+                    {
+                        peopleCtrl.peopleTreated.BeTreated(); // Set BeingTreated == true cho people
+                        this.doctorCtrl.doctorHealing.AddQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
+                    }
+                        
                 }
             }
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);

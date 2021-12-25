@@ -2460,7 +2460,7 @@ MonoBehaviour:
   - virusName: 0
     maxInfectionRate: 0
   - virusName: 1
-    maxInfectionRate: 7.2
+    maxInfectionRate: 7
   - virusName: 2
     maxInfectionRate: 8
   - virusName: 3
@@ -7099,7 +7099,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.49269882, y: -0.000000029945966, z: 0.000000016955122, w: 0.8701999}
+  m_LocalRotation: {x: 0.49269885, y: 0.000000029945994, z: -0.000000016955134, w: 0.8701999}
   m_LocalPosition: {x: 27.6, y: 10, z: 30.439999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9553,7 +9553,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248433594}
-  m_LocalRotation: {x: 0.49269882, y: -0.000000029945966, z: 0.000000016955122, w: 0.8701999}
+  m_LocalRotation: {x: 0.49269885, y: 0.000000029945994, z: -0.000000016955134, w: 0.8701999}
   m_LocalPosition: {x: 27.6, y: 10, z: 30.439999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15198,6 +15198,30 @@ PrefabInstance:
       propertyPath: doctorCtrl
       value: 
       objectReference: {fileID: 4726812}
+    - target: {fileID: 968003890133077174, guid: 1ecbee65e70584649ac729f5c8a46a4b, type: 3}
+      propertyPath: medicineInfos.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 968003890133077174, guid: 1ecbee65e70584649ac729f5c8a46a4b, type: 3}
+      propertyPath: medicineInfos.Array.data[0].medicineName
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 968003890133077174, guid: 1ecbee65e70584649ac729f5c8a46a4b, type: 3}
+      propertyPath: medicineInfos.Array.data[1].medicineName
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 968003890133077174, guid: 1ecbee65e70584649ac729f5c8a46a4b, type: 3}
+      propertyPath: medicineInfos.Array.data[2].medicineName
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 968003890133077174, guid: 1ecbee65e70584649ac729f5c8a46a4b, type: 3}
+      propertyPath: medicineInfos.Array.data[3].medicineName
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 968003890133077174, guid: 1ecbee65e70584649ac729f5c8a46a4b, type: 3}
+      propertyPath: medicineInfos.Array.data[4].medicineName
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5457521288719426473, guid: 1ecbee65e70584649ac729f5c8a46a4b, type: 3}
       propertyPath: canvas
       value: 

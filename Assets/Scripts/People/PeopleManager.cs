@@ -30,6 +30,7 @@ public class PeopleManager : MainBehaviour
     // Load VirusInfo trên inspector
     protected void LoadVirusInfos()
     {
+        if (virusInfos.Count != 0) return;
         for (int i = 0; i < Enum.GetNames(typeof(VirusName)).Length; i++)
         {
             VirusInfo info = new VirusInfo();

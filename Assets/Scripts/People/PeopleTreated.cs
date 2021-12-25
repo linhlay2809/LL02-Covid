@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ public class PeopleTreated : MainBehaviour
         base.LoadComponents();
         LoadPeopleCtrl();
     }
-    // Load PeopleCtrl tr�n inspector
+    // Load PeopleCtrl trên inspector
     protected virtual void LoadPeopleCtrl()
     {
         if (peopleCtrl != null) return;
@@ -20,6 +20,7 @@ public class PeopleTreated : MainBehaviour
         Debug.Log(transform.name + ": LoadPeopleCtrl");
     }
 
+    // Được chưa trị 
     public void BeTreated()
     {
         if (peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus) return;
