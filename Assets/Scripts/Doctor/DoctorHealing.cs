@@ -8,13 +8,14 @@ public class DoctorHealing : MainBehaviour
     public DoctorCtrl doctorCtrl;
 
     [SerializeField] protected List<MedicineInfo>  medicineInfos;
-
+    [SerializeField] protected List<VaccineInfo> vaccineInfos;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         LoadMedicineInfos();
         LoadDoctorCtrl();
+        LoadVaccineInfos();
     }
 
     // Load DoctorCtrl
@@ -25,10 +26,16 @@ public class DoctorHealing : MainBehaviour
         Debug.Log(transform.name + ": LoadDoctorCtrl");
     }
 
-    // Get MedicineInfo
-    public MedicineInfo GetMedicineInfo(int medicineIndex)
+    // Load VaccineInfos trên inspecter
+    protected void LoadVaccineInfos()
     {
-        return medicineInfos[medicineIndex];
+        if (vaccineInfos.Count != 0) return;
+        for (int i = 1; i < Enum.GetNames(typeof(VaccineName)).Length; i++)
+        {
+            VaccineInfo info = new VaccineInfo();
+            info.vaccineName = (VaccineName)Enum.ToObject(typeof(VaccineName), i);
+            vaccineInfos.Add(info);
+        }
     }
 
     // Load MedicineInfo trên inspecter
@@ -42,7 +49,19 @@ public class DoctorHealing : MainBehaviour
             medicineInfos.Add(info);
         }
     }
-    
+
+    // Get MedicineInfo
+    public MedicineInfo GetMedicineInfo(int medicineIndex)
+    {
+        return medicineInfos[medicineIndex];
+    }
+
+    // Get MedicineInfo
+    public VaccineInfo GetVaccineInfo(int vaccineIndex)
+    {
+        return vaccineInfos[vaccineIndex];
+    }
+
     // Thêm số lượng thuốc
     public void AddQuantily(int medicineIndex, int value)
     {

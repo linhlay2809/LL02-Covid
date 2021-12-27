@@ -42,21 +42,28 @@ public class DoctorInteraction : MainBehaviour
 
         if (Physics.Raycast(hitPos, transform.TransformDirection(Vector3.forward), out hit, 2f, layerMask))
         {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
+                //if (peopleCtrl == null) return;
+
+                peopleCtrl.peopleTreated.Vaccination(this.doctorCtrl.doctorHealing.GetVaccineInfo(0));
+            }
             if (Input.GetKeyDown(KeyCode.E))
             {
                 PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
-                if (peopleCtrl != null)
+                if (peopleCtrl == null) return;
+
+                if (peopleCtrl.peopleHealthInfo.GetBeTreated()) return;
+                if (peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus) return;
+                int medicineIndex = (int)peopleCtrl.peopleHealthInfo.VirusName - 1; // Lấy index của virusname -1 
+                if (this.doctorCtrl.doctorHealing.GetMedicineInfo(medicineIndex).quantily > 0)
                 {
-                    if (peopleCtrl.peopleHealthInfo.GetBeTreated()) return;
-                    int medicineIndex = (int)peopleCtrl.peopleHealthInfo.VirusName;
-                    if (this.doctorCtrl.doctorHealing.GetMedicineInfo(medicineIndex).quantily > 0)
-                    {
-                        peopleCtrl.peopleTreated.BeTreated(); // Set BeingTreated == true cho people
-                        this.doctorCtrl.doctorHealing.AddQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
-                    }
-                        
+                    peopleCtrl.peopleTreated.BeTreated(); // Set BeingTreated == true cho people
+                    this.doctorCtrl.doctorHealing.AddQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
                 }
             }
+            
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
         }
         else

@@ -33,6 +33,9 @@ public class PeopleInfection : MainBehaviour
 
         // lấy tất cả các object có layer = WhatIsInfection đang bên trong OverlapSphere
         Collider[] objs = Physics.OverlapSphere(transform.position + new Vector3(0f, 1.5f, 0f), infectionRadius, WhatIsInfection);
+        
+        if (objs.Length <= 1) return; // trả về nếu không có đối tượng trigger
+        
         if (Time.time > currentDelayTime)
         {
             currentDelayTime = Time.time + infectionDelayTime;
@@ -47,17 +50,18 @@ public class PeopleInfection : MainBehaviour
         foreach (Collider col1 in objs)
         {
             PeopleCtrl anotherPeopleCtrl = col1.GetComponent<PeopleCtrl>();
-            if (anotherPeopleCtrl != null)
+            if (anotherPeopleCtrl == null) return;
+            
+            if (anotherPeopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus)
             {
-                if (anotherPeopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus)
-                {
-                    //Debug.LogWarning("Infection");
-                    anotherPeopleCtrl.peopleInfeted.Infected(this.peopleCtrl.peopleHealthInfo.InfectionRate, this.peopleCtrl.peopleHealthInfo.VirusName);
-                }
+                PeopleHealthInfo healthInfo = this.peopleCtrl.peopleHealthInfo; // Get PeopleHealthInfo của this object
+
+                anotherPeopleCtrl.peopleInfected.Infected(healthInfo.InfectionRate, healthInfo.VirusName);
             }
         }
     }
 
+    // Debug phạm vi lay nhiễm
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;

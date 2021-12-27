@@ -394,9 +394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f59131378b855d4594adcb3458638a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  peopleCtrl: {fileID: 6688339202542525907}
   virusName: 2
   infectionRate: 8
-  maxInfectionRate: 0
   deathRate: 0
   timeToDeath: 0
   beingTreated: 0
@@ -431,6 +431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   peopleCtrl: {fileID: 6688339202542525907}
+  maxInfectionRate: 0
+  reduceInfectionRate: 1
 --- !u!114 &4621237190311984460
 MonoBehaviour:
   m_ObjectHideFlags: 0
