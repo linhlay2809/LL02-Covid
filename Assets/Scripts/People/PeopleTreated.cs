@@ -44,8 +44,10 @@ public class PeopleTreated : MainBehaviour
             this.peopleCtrl.peopleInfected.SetReduceInfectionRate(vaccineInfo.protectionRate);
 
             this.peopleCtrl.peopleHealthInfo.NumberOfDoses += 1;
+            vaccineInfo.quantily -= 1;
         }
-
     }
+
+
 
 }

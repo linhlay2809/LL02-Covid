@@ -7,6 +7,7 @@ public class PlayerController : MainBehaviour
     private Rigidbody _rigidbodyPlayer;
     private Animator _anim;
     private Transform _groundChecker;
+    [SerializeField] protected bool isMoving = true;
     [SerializeField] protected float playerSpeed = 2.0f;
     [SerializeField] protected float rotationSpeed = 2.0f;
     [SerializeField] protected float jumpHeight = 1.0f;
@@ -24,6 +25,7 @@ public class PlayerController : MainBehaviour
 
     protected override void Update()
     {
+        if (!isMoving) return;
         _isGrounded = Physics.CheckSphere(_groundChecker.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
 
         float horizontalInput = Input.GetAxis("Horizontal");
