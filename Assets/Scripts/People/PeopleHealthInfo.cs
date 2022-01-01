@@ -10,11 +10,8 @@ public class PeopleHealthInfo : MainBehaviour
     [SerializeField] protected Dose numberOfDoses;
     [Tooltip("Tỷ lệ lây nhiễm")]
     [SerializeField] protected float infectionRate;
-
     [Tooltip("Tỷ lệ tử vong")]
     [SerializeField] protected float deathRate;
-    [Tooltip("Thời gian tử vong")]
-    [SerializeField] protected float timeToDeath;
     [Tooltip("Đang chữa trị")]
     [SerializeField] protected bool beingTreated = false;
     protected float rateToDeath;
@@ -76,7 +73,7 @@ public class PeopleHealthInfo : MainBehaviour
 
     public void SetRateToDeath(float timeToDeath)
     {
-        this.timeToDeath = timeToDeath;
+        this.peopleCtrl.peopleTreated.SetTimeToDeath(timeToDeath);
         rateToDeath = (100f / (timeToDeath * 60f)); // Tỷ lệ tử vong sau 1 giây
     }
     

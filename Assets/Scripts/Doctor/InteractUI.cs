@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InteractUI : MonoBehaviour
+public class InteractUI : MainBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected List<Button> buttons;
+
+    protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
+        LoadButtons();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Load
+    protected void LoadButtons()
     {
-        
+        Button[] child = transform.GetChild(0).GetComponentsInChildren<Button>();
+        foreach (Button button in child)
+        {
+            buttons.Add(button);
+        }
     }
 }

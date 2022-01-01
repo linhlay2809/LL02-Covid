@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f10c50d736adc5d4882af01714f8d086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 1
   playerSpeed: 4
   rotationSpeed: 700
   jumpHeight: 3
@@ -382,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75156b309f464d84a97ae6395b003f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doctorCtrl: {fileID: 0}
   medicineInfos:
   - medicineName: 1
     quantily: 0
@@ -391,6 +393,7 @@ MonoBehaviour:
     quantily: 0
   - medicineName: 4
     quantily: 0
+  vaccineInfos: []
 --- !u!114 &5457521288719426473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cb4a875b96f9b45a750f968e04b323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doctorCtrl: {fileID: 0}
+  interactUI: {fileID: 0}
+  testVaccineButton: {fileID: 0}
+  treatPeopleButton: {fileID: 0}
+  vaccineButton: {fileID: 0}
 --- !u!1 &8732859641130231025
 GameObject:
   m_ObjectHideFlags: 0

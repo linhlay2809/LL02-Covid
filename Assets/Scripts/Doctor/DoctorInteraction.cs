@@ -9,24 +9,63 @@ public class DoctorInteraction : MainBehaviour
     public DoctorCtrl doctorCtrl;
 
 
-    public GameObject canvas;
-    public Button button;
-    public GameObject a;
-    public GameObject b;
+    public GameObject interactUI;
+    [SerializeField] protected List<Button> buttons;
+    [SerializeField] protected List<Button> vaccineButtons;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
         LoadDoctorCtrl();
+        LoadInteractUI();
+        LoadButtons();
+        LoadVaccineButtons();
     }
 
     // Load PeopleCtrl trên inspector
     protected virtual void LoadDoctorCtrl()
     {
-        if (doctorCtrl != null) return;
-        doctorCtrl = GetComponent<DoctorCtrl>();
+        if (this.doctorCtrl != null) return;
+        this.doctorCtrl = GetComponent<DoctorCtrl>();
         Debug.Log(transform.name + ": LoadDoctorCtrl");
     }
 
+    protected void LoadInteractUI()
+    {
+        if (interactUI != null) return;
+        interactUI = GameObject.Find("InteractUI");
+        Debug.Log(transform.name + ": LoadInteractUI");
+    }
+
+    // Load Buttons trên inspector
+    protected void LoadButtons()
+    {
+        if (buttons.Count != 0) return;
+        Button[] child =interactUI.transform.GetChild(0).GetComponentsInChildren<Button>();
+        foreach (Button bt in child)
+        {
+            buttons.Add(bt);
+        }
+        Debug.Log(transform.name + ": LoadButtons");
+    }
+
+    // Load Buttons trên inspector
+    protected void LoadVaccineButtons()
+    {
+        if (vaccineButtons.Count != 0) return;
+        Button[] child = interactUI.transform.GetChild(1).GetComponentsInChildren<Button>();
+        foreach (Button bt in child)
+        {
+            vaccineButtons.Add(bt);
+        }
+        Debug.Log(transform.name + ": LoadVaccineButtons");
+    }
+
+    protected override void FixedUpdate()
+    {
+        Vector3 pos = Camera.main.WorldToScreenPoint(this.transform.position);
+        interactUI.transform.position = pos;
+    }
     protected override void Update()
     {
         // Bit shift the index of the layer (8) to get a bit mask
@@ -41,23 +80,17 @@ public class DoctorInteraction : MainBehaviour
 
         if (Physics.Raycast(hitPos, transform.TransformDirection(Vector3.forward), out hit, 2f, layerMask))
         {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
-                if (peopleCtrl == null) return;
-                if (doctorCtrl.doctorHealing.GetVaccineInfo(0).quantily <= 0) return;
-                peopleCtrl.peopleTreated.Vaccination(this.doctorCtrl.doctorHealing.GetVaccineInfo(0));
-            }
+            //if (Input.GetKeyDown(KeyCode.F))
+            //{
+            //    PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
+            //    if (peopleCtrl == null) return;
+            //    VaccineToPeople(this.doctorCtrl.doctorHealing.GetVaccineInfo(0), peopleCtrl);
+            //}
             if (Input.GetKeyDown(KeyCode.E))
             {
-                canvas.SetActive(!canvas.activeInHierarchy);
-                
                 PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
                 if (peopleCtrl == null) return;
-                button.onClick.RemoveAllListeners();
-                button.onClick.AddListener(() => TreatPeople(peopleCtrl));
-                //button.onClick.RemoveListener(() => TreatPeople(peopleCtrl));
-                TreatPeople(peopleCtrl);
+                EnableInteractUI(this.doctorCtrl, peopleCtrl);
             }
 
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
@@ -67,31 +100,48 @@ public class DoctorInteraction : MainBehaviour
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * 2f, Color.white);
         }
 
-        //if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() == button)
-        //{
-            
-        //    Debug.Log("select");
-        //}
 
     }
 
-    protected override void FixedUpdate()
+    protected void EnableInteractUI(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
     {
-        Vector3 pos = Camera.main.WorldToScreenPoint(this.transform.position);
-        canvas.transform.position = pos;
-        
+        interactUI.SetActive(!interactUI.activeInHierarchy);
+        if (interactUI.activeInHierarchy)
+        {
+            Debug.Log("Add listen");
+            buttons[1].onClick.AddListener(() => TreatToPeople(doctorCtrl, peopleCtrl));
+            vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(doctorCtrl.doctorHealing.GetVaccineInfo(0), peopleCtrl));
+            vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(doctorCtrl.doctorHealing.GetVaccineInfo(1), peopleCtrl));
+            vaccineButtons[2].onClick.AddListener(() => VaccineToPeople(doctorCtrl.doctorHealing.GetVaccineInfo(2), peopleCtrl));
+        }
+        else
+        {
+            Debug.Log("Remove");
+            buttons[1].onClick.RemoveAllListeners();
+            vaccineButtons[0].onClick.RemoveAllListeners();
+            vaccineButtons[1].onClick.RemoveAllListeners();
+            vaccineButtons[2].onClick.RemoveAllListeners();
+        }
+    }
+    public void OnOffVaccineInteract()
+    {
+        GameObject vaccineIR = interactUI.transform.GetChild(1).gameObject;
+        vaccineIR.SetActive(!vaccineIR.activeInHierarchy);
     }
 
-    public void TreatPeople(PeopleCtrl peopleCtrl)
+    public void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
     {
-        if (peopleCtrl.peopleHealthInfo.GetBeTreated()) return;
-        if (peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus) return;
-        int medicineIndex = (int)peopleCtrl.peopleHealthInfo.VirusName - 1; // Lấy index của virusname -1
-                                                                            // 
-        if (this.doctorCtrl.doctorHealing.GetMedicineInfo(medicineIndex).quantily <= 0) return;
+        EnableInteractUI(null, null);
 
-        peopleCtrl.peopleTreated.BeTreated(); // Set BeingTreated == true cho people
+        if (vaccineInfo.quantily <= 0) return;
 
-        this.doctorCtrl.doctorHealing.AddQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
+        peopleCtrl.peopleTreated.Vaccination(vaccineInfo);
+    }
+
+    public void TreatToPeople(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
+    {
+        EnableInteractUI(null, null);
+
+        peopleCtrl.peopleTreated.BeTreated(doctorCtrl);
     }
 }

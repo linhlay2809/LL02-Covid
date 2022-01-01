@@ -7,8 +7,7 @@ public class PeopleInfected : MainBehaviour
     public PeopleCtrl peopleCtrl;
     [Tooltip("Tỷ lệ lây nhiễm tối đa")]
     [SerializeField] protected float maxInfectionRate;
-    [Tooltip("Tỷ lệ giảm khi bị nhiễm")]
-    [SerializeField] protected float reduceInfectionRate = 0;
+
 
 
     protected override void LoadComponents()
@@ -30,15 +29,10 @@ public class PeopleInfected : MainBehaviour
         return this.maxInfectionRate;
     }
 
-    public void SetReduceInfectionRate(float value)
-    {
-        this.reduceInfectionRate = value;
-    }
-
     // Gán giá trị truyền vào cho maxInfectionRate
     public void SetMaxInfectionRate(float index)
     {
-        this.maxInfectionRate = index - reduceInfectionRate * (int)peopleCtrl.peopleHealthInfo.NumberOfDoses;
+        this.maxInfectionRate = index - this.peopleCtrl.peopleTreated.GetReduceInfectionRate() * (int)peopleCtrl.peopleHealthInfo.NumberOfDoses;
     }
 
     // Đang bị object bị nhiễm lây bệnh
