@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DoctorHealing : MainBehaviour
 {
+    [HideInInspector]
     public DoctorCtrl doctorCtrl;
 
     [SerializeField] protected List<MedicineInfo>  medicineInfos;
@@ -56,7 +57,7 @@ public class DoctorHealing : MainBehaviour
         return medicineInfos[medicineIndex];
     }
 
-    // Get MedicineInfo
+    // Get VaccineInfo
     public VaccineInfo GetVaccineInfo(int vaccineIndex)
     {
         return vaccineInfos[vaccineIndex];

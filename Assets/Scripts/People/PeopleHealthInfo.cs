@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PeopleHealthInfo : MainBehaviour
 {
+    [HideInInspector]
     public PeopleCtrl peopleCtrl;
 
     [SerializeField] protected VirusName virusName;

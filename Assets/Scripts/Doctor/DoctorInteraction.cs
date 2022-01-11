@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class DoctorInteraction : MainBehaviour
 {
+    [HideInInspector]
     public DoctorCtrl doctorCtrl;
 
+    [SerializeField] protected GameObject interactUI;
+    [SerializeField] protected GameObject hintUI;
 
-    public GameObject interactUI;
     [SerializeField] protected List<Button> buttons;
     [SerializeField] protected List<Button> vaccineButtons;
 
+    GameObject vaccineIR;
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -30,6 +33,7 @@ public class DoctorInteraction : MainBehaviour
         Debug.Log(transform.name + ": LoadDoctorCtrl");
     }
 
+    // Load InteractUI trên inspector
     protected void LoadInteractUI()
     {
         if (interactUI != null) return;
@@ -49,7 +53,7 @@ public class DoctorInteraction : MainBehaviour
         Debug.Log(transform.name + ": LoadButtons");
     }
 
-    // Load Buttons trên inspector
+    // Load VaccineButtons trên inspector
     protected void LoadVaccineButtons()
     {
         if (vaccineButtons.Count != 0) return;
@@ -60,11 +64,15 @@ public class DoctorInteraction : MainBehaviour
         }
         Debug.Log(transform.name + ": LoadVaccineButtons");
     }
-
+    protected void Start()
+    {
+        vaccineIR = interactUI.transform.GetChild(1).gameObject; // Gán object vaccineInteractUI vào inspector khi startGame
+    }
     protected override void FixedUpdate()
     {
         Vector3 pos = Camera.main.WorldToScreenPoint(this.transform.position);
-        interactUI.transform.position = pos;
+        interactUI.transform.position = pos; // Cập nhật vị trí interactUI theo player
+        hintUI.transform.position = pos;
     }
     protected override void Update()
     {
@@ -80,32 +88,29 @@ public class DoctorInteraction : MainBehaviour
 
         if (Physics.Raycast(hitPos, transform.TransformDirection(Vector3.forward), out hit, 2f, layerMask))
         {
-            //if (Input.GetKeyDown(KeyCode.F))
-            //{
-            //    PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
-            //    if (peopleCtrl == null) return;
-            //    VaccineToPeople(this.doctorCtrl.doctorHealing.GetVaccineInfo(0), peopleCtrl);
-            //}
             if (Input.GetKeyDown(KeyCode.E))
             {
                 PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
                 if (peopleCtrl == null) return;
                 EnableInteractUI(this.doctorCtrl, peopleCtrl);
             }
-
+            hintUI.SetActive(true);
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
         }
         else
         {
+            hintUI.SetActive(false);
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * 2f, Color.white);
         }
 
 
     }
 
+    // Bật tắt cửa sổ InteractUI
     protected void EnableInteractUI(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
     {
         interactUI.SetActive(!interactUI.activeInHierarchy);
+        vaccineIR.SetActive(false);
         if (interactUI.activeInHierarchy)
         {
             Debug.Log("Add listen");
@@ -123,21 +128,25 @@ public class DoctorInteraction : MainBehaviour
             vaccineButtons[2].onClick.RemoveAllListeners();
         }
     }
+
+    // SetActive interactVaccineUI when vaccineButton is click
     public void OnOffVaccineInteract()
     {
-        GameObject vaccineIR = interactUI.transform.GetChild(1).gameObject;
         vaccineIR.SetActive(!vaccineIR.activeInHierarchy);
     }
 
+    // Tiêm vaccine cho bệnh nhân
     public void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
     {
         EnableInteractUI(null, null);
 
+        // Trả về khi số lượng vaccine <= 0
         if (vaccineInfo.quantily <= 0) return;
 
         peopleCtrl.peopleTreated.Vaccination(vaccineInfo);
     }
 
+    // Chữa trị cho bệnh nhân
     public void TreatToPeople(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
     {
         EnableInteractUI(null, null);

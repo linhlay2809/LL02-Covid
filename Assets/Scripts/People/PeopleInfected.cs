@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PeopleInfected : MainBehaviour
 {
+    [HideInInspector]
     public PeopleCtrl peopleCtrl;
     [Tooltip("Tỷ lệ lây nhiễm tối đa")]
     [SerializeField] protected float maxInfectionRate;

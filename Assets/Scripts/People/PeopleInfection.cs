@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PeopleInfection : MainBehaviour
 {
+    [HideInInspector]
     public PeopleCtrl peopleCtrl;
     [SerializeField] protected float infectionRadius;
     [SerializeField] protected LayerMask WhatIsInfection;
     [SerializeField] protected float infectionDelayTime;
     protected float currentDelayTime;
+
     protected override void Update()
     {
         this.Infection();
