@@ -8,7 +8,8 @@ public class DoctorInteraction : MainBehaviour
 {
     [HideInInspector]
     public DoctorCtrl doctorCtrl;
-
+    [SerializeField] protected Transform canvas;
+    [SerializeField] protected MainUISetting mainUISetting;
     [SerializeField] protected GameObject interactUI;
     [SerializeField] protected GameObject hintUI;
 
@@ -20,7 +21,10 @@ public class DoctorInteraction : MainBehaviour
     {
         base.LoadComponents();
         LoadDoctorCtrl();
+        LoadCanvas();
+        LoadMainUISetting();
         LoadInteractUI();
+        LoadHintUI();
         LoadButtons();
         LoadVaccineButtons();
     }
@@ -33,11 +37,23 @@ public class DoctorInteraction : MainBehaviour
         Debug.Log(transform.name + ": LoadDoctorCtrl");
     }
 
+    // Load canvas
+    protected void LoadCanvas()
+    {
+        if(this.canvas != null) return;
+        this.canvas = transform.GetChild(3);
+    }
+
+    protected void LoadMainUISetting()
+    {
+        if(mainUISetting != null) return;
+        mainUISetting = GameObject.Find("MainUI").GetComponent<MainUISetting>();
+    }
     // Load InteractUI trên inspector
     protected void LoadInteractUI()
     {
         if (interactUI != null) return;
-        interactUI = GameObject.Find("InteractUI");
+        interactUI = canvas.GetChild(0).gameObject;
         Debug.Log(transform.name + ": LoadInteractUI");
     }
 
@@ -51,6 +67,14 @@ public class DoctorInteraction : MainBehaviour
             buttons.Add(bt);
         }
         Debug.Log(transform.name + ": LoadButtons");
+    }
+
+    // Load hintUI
+    protected void LoadHintUI()
+    {
+        if(hintUI != null) return;
+        hintUI = canvas.GetChild(1).gameObject;
+        Debug.Log(transform.name + ": LoadHintUI");
     }
 
     // Load VaccineButtons trên inspector
@@ -114,6 +138,7 @@ public class DoctorInteraction : MainBehaviour
         if (interactUI.activeInHierarchy)
         {
             Debug.Log("Add listen");
+            buttons[0].onClick.AddListener(() => TestCovid(peopleCtrl));
             buttons[1].onClick.AddListener(() => TreatToPeople(doctorCtrl, peopleCtrl));
             vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(doctorCtrl.doctorHealing.GetVaccineInfo(0), peopleCtrl));
             vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(doctorCtrl.doctorHealing.GetVaccineInfo(1), peopleCtrl));
@@ -122,6 +147,7 @@ public class DoctorInteraction : MainBehaviour
         else
         {
             Debug.Log("Remove");
+            buttons[0].onClick.RemoveAllListeners();
             buttons[1].onClick.RemoveAllListeners();
             vaccineButtons[0].onClick.RemoveAllListeners();
             vaccineButtons[1].onClick.RemoveAllListeners();
@@ -135,8 +161,15 @@ public class DoctorInteraction : MainBehaviour
         vaccineIR.SetActive(!vaccineIR.activeInHierarchy);
     }
 
+    // Test Covid cho bệnh nhân
+    protected void TestCovid(PeopleCtrl peopleCtrl)
+    {
+        EnableInteractUI(null, null);
+        mainUISetting.ShowInfoDisplay(peopleCtrl);
+    }
+
     // Tiêm vaccine cho bệnh nhân
-    public void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
+    protected void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
     {
         EnableInteractUI(null, null);
 
@@ -147,7 +180,7 @@ public class DoctorInteraction : MainBehaviour
     }
 
     // Chữa trị cho bệnh nhân
-    public void TreatToPeople(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
+    protected void TreatToPeople(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
     {
         EnableInteractUI(null, null);
 

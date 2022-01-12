@@ -46,6 +46,17 @@ public class PeopleHealthInfo : MainBehaviour
         get { return infectionRate; }
         set { infectionRate = value; }
     }
+    // Lấy giá trị bool beingTreated
+    public bool GetBeTreated()
+    {
+        return this.beingTreated;
+    }
+
+    // Lấy giá trị DeathRate
+    public float GetDeathRate()
+    {
+        return this.deathRate;
+    }
     protected override void Awake()
     {
         SetRateToDeath(Random.Range(6, 10)); // Thời gian tử vong
@@ -64,12 +75,6 @@ public class PeopleHealthInfo : MainBehaviour
             this.ReduceInfectionRate();
         }
 
-    }
-
-    // Lấy giá trị bool beingTreated
-    public bool GetBeTreated()
-    {
-        return this.beingTreated;
     }
 
     public void SetRateToDeath(float timeToDeath)
