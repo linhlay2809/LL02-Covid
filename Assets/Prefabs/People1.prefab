@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 8812591229695788488}
   - component: {fileID: -2360075565942793283}
   - component: {fileID: 4621237190311984460}
+  - component: {fileID: -1092021395096274124}
   m_Layer: 6
   m_Name: People1
   m_TagString: Untagged
@@ -382,6 +383,7 @@ MonoBehaviour:
   peopleInfection: {fileID: 8812591229695788488}
   peopleInfected: {fileID: -2360075565942793283}
   peopleTreated: {fileID: 4621237190311984460}
+  peopleInfo: {fileID: -1092021395096274124}
 --- !u!114 &9081241033314789467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +401,6 @@ MonoBehaviour:
   numberOfDoses: 0
   infectionRate: 8
   deathRate: 0
-  timeToDeath: 0
   beingTreated: 0
 --- !u!114 &8812591229695788488
 MonoBehaviour:
@@ -433,7 +434,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   peopleCtrl: {fileID: 6688339202542525907}
   maxInfectionRate: 0
-  reduceInfectionRate: 1
 --- !u!114 &4621237190311984460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +448,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   peopleCtrl: {fileID: 6688339202542525907}
   vaccine: 0
+  reduceInfectionRate: 0
+  timeToDeath: 0
+--- !u!114 &-1092021395096274124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270939244021509875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19fdd3b1dd89cf4d90c2c7a7fa6b2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 0}
+  id: 0
 --- !u!1 &5270939244021509879
 GameObject:
   m_ObjectHideFlags: 0

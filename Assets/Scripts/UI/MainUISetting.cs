@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,22 +7,46 @@ using UnityEngine.UI;
 public class MainUISetting : MainBehaviour
 {
     [SerializeField] protected GameObject infoUI;
+    [SerializeField] protected Image avatar;
     [SerializeField] protected List<Text> textList;
+
+    [SerializeField] protected PeopleCtrl peopleCtrl;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
+        LoadAvatar();
         LoadTextList();
         LoadUI();
     }
 
-    private void LoadUI()
+    // Gán peopleCtrl khi interact
+    public void SetInfoNewPeople(PeopleCtrl peopleCtrl)
+    {
+        this.peopleCtrl = peopleCtrl;   
+    }
+
+    protected override void Update()
+    {
+        if (this.peopleCtrl == null) return;
+        DisplayInformation(peopleCtrl);
+    }
+
+    // Load Image avatar
+    protected void LoadAvatar()
+    {
+        if (avatar != null) return;
+        avatar = gameObject.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+    }
+    // Load InfoOfPeople trên inspector
+    protected void LoadUI()
     {
         if (infoUI != null) return;
         infoUI = transform.GetChild(0).gameObject;
         Debug.Log(transform.name + ": LoadUI");
     }
 
+    // Load textList trên inspector
     protected void LoadTextList()
     {
         if (textList.Count != 0) return;
@@ -34,14 +58,30 @@ public class MainUISetting : MainBehaviour
         Debug.Log(transform.name + ": LoadTextList");
     }
 
-    public void ShowInfoDisplay(PeopleCtrl peopleCtrl)
+    // Bật InfoUI
+    public void TurnOnDisplayPeople()
     {
         infoUI.SetActive(true);
-        textList[0].text = peopleCtrl.peopleHealthInfo.VirusName.ToString();
+    }
+
+    // Tắt InfoUI
+    public void TurnOffDisplayPeople()
+    {
+        infoUI.SetActive(false);
+        if (this.peopleCtrl == null) return;
+        this.peopleCtrl = null;
+    }
+
+    // Load số liệu của people được test
+    public void DisplayInformation(PeopleCtrl peopleCtrl)
+    {
+        avatar.sprite = peopleCtrl.peopleInfo.GetAvatarPeople();
+        textList[0].text = GameManager.Instance.strCovidList[(int)peopleCtrl.peopleHealthInfo.VirusName];
         textList[1].text = peopleCtrl.peopleHealthInfo.InfectionRate.ToString();
         textList[2].text = peopleCtrl.peopleHealthInfo.GetDeathRate().ToString();
-        textList[3].text = peopleCtrl.peopleHealthInfo.GetBeTreated().ToString();
-        textList[4].text = peopleCtrl.peopleTreated.Vaccine.ToString();
-        textList[5].text = peopleCtrl.peopleHealthInfo.NumberOfDoses.ToString();
+        textList[3].text = peopleCtrl.peopleHealthInfo.GetBeTreated() ? "Yes" : "No";
+        textList[4].text = GameManager.Instance.strVaccineList[(int)peopleCtrl.peopleTreated.Vaccine];
+        textList[5].text = GameManager.Instance.strDoseList[(int)peopleCtrl.peopleHealthInfo.NumberOfDoses];
+        textList[6].text = peopleCtrl.peopleInfo.GetIDPeople().ToString();
     }
 }

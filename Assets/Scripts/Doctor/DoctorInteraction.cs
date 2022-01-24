@@ -134,6 +134,7 @@ public class DoctorInteraction : MainBehaviour
     protected void EnableInteractUI(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
     {
         interactUI.SetActive(!interactUI.activeInHierarchy);
+        mainUISetting.TurnOffDisplayPeople();
         vaccineIR.SetActive(false);
         if (interactUI.activeInHierarchy)
         {
@@ -165,7 +166,9 @@ public class DoctorInteraction : MainBehaviour
     protected void TestCovid(PeopleCtrl peopleCtrl)
     {
         EnableInteractUI(null, null);
-        mainUISetting.ShowInfoDisplay(peopleCtrl);
+        mainUISetting.TurnOnDisplayPeople();
+        mainUISetting.SetInfoNewPeople(peopleCtrl);
+        
     }
 
     // Tiêm vaccine cho bệnh nhân

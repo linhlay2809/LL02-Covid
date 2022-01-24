@@ -77,6 +77,7 @@ public class PeopleHealthInfo : MainBehaviour
 
     }
 
+    // Gán thời gian tử vong và tỷ lệ % tăng sau mỗi giây
     public void SetRateToDeath(float timeToDeath)
     {
         this.peopleCtrl.peopleTreated.SetTimeToDeath(timeToDeath);
