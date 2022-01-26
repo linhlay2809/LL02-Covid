@@ -21,7 +21,7 @@ public class PeopleInfo : MainBehaviour
     {
         base.LoadComponents();
     }
-    protected override void Awake()
+    protected void Start()
     {
         avatar = GameManager.Instance.avatarPeople[0];
         id = Random.Range(0, 1000000);
