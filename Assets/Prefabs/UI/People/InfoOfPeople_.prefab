@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: 3924976808640476839}
   - component: {fileID: 3924976808640476837}
   - component: {fileID: 3924976808640476838}
+  - component: {fileID: 1333310549}
   m_Layer: 5
   m_Name: InfoOfPeople_
   m_TagString: Untagged
@@ -516,6 +517,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1333310549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924976808640476832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d88f49e6bca6d24f8309653aafd13c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatar: {fileID: 3924976809862319768}
+  textList:
+  - {fileID: 3924976808779449043}
+  - {fileID: 3924976809939685707}
+  - {fileID: 3924976808600868997}
+  - {fileID: 3924976809127214711}
+  - {fileID: 3924976809783635097}
+  - {fileID: 3924976808657236916}
+  - {fileID: 3924976808326252589}
+  peopleCtrl: {fileID: 0}
 --- !u!1 &3924976808657236918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,9 +1134,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainUISetting, Assembly-CSharp
-        m_MethodName: Loadimage
+      - m_Target: {fileID: 1333310549}
+        m_TargetAssemblyTypeName: InfoPeopleUI, Assembly-CSharp
+        m_MethodName: TurnOffDisplayPeople
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

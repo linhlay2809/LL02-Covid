@@ -50,18 +50,18 @@ public class PeopleTreated : MainBehaviour
     }
 
     // Được chưa trị 
-    public void BeTreated(DoctorCtrl doctorCtrl)
+    public void BeTreated()
     {
 
         if (peopleCtrl.peopleHealthInfo.GetBeTreated()) return;
         if (peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus) return;
-        int medicineIndex = (int)peopleCtrl.peopleHealthInfo.VirusName - 1; // Lấy index của virusname -1
+        int medicineIndex = (int) peopleCtrl.peopleHealthInfo.VirusName - 1; // Lấy index của virusname -1
         // Trả về khi sô lượng thuốc <= 0
-        if (doctorCtrl.doctorHealing.GetMedicineInfo((int)peopleCtrl.peopleHealthInfo.VirusName - 1).quantily <= 0) return;
+        if (GameManager.Instance.GetMedicineInfo((int)peopleCtrl.peopleHealthInfo.VirusName - 1).quantily <= 0) return;
 
         this.peopleCtrl.peopleHealthInfo.SetBeingTreated(true);
 
-        doctorCtrl.doctorHealing.AddQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
+        GameManager.Instance.AddMedicineQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
     }
 
     // Được tiêm vaccine
@@ -76,7 +76,9 @@ public class PeopleTreated : MainBehaviour
             this.SetReduceInfectionRate(vaccineInfo.protectionRate);
 
             this.peopleCtrl.peopleHealthInfo.NumberOfDoses += 1;
-            vaccineInfo.quantily -= 1;
+            GameManager.Instance.AddVaccineQuantily((int)vaccineInfo.vaccineName - 1, -1); // Cập nhật số lượng vaccine
+
+            //vaccineInfo.quantily -= 1;
         }
     }
 

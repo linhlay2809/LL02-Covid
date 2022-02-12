@@ -17,6 +17,7 @@ public class DoctorInteraction : MainBehaviour
     [SerializeField] protected List<Button> vaccineButtons;
 
     GameObject vaccineIR;
+    RaycastHit hit;
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -106,8 +107,7 @@ public class DoctorInteraction : MainBehaviour
         // This would cast rays only against colliders in layer 8.
         // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
         layerMask = ~layerMask;
-
-        RaycastHit hit;
+        
         Vector3 hitPos = transform.position + new Vector3(0f, 1.5f, 0f); // Vị trí bắt đầu RayCast
 
         if (Physics.Raycast(hitPos, transform.TransformDirection(Vector3.forward), out hit, 2f, layerMask))
@@ -116,7 +116,7 @@ public class DoctorInteraction : MainBehaviour
             {
                 PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
                 if (peopleCtrl == null) return;
-                EnableInteractUI(this.doctorCtrl, peopleCtrl);
+                EnableInteractUI(peopleCtrl);
             }
             hintUI.SetActive(true);
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
@@ -131,19 +131,19 @@ public class DoctorInteraction : MainBehaviour
     }
 
     // Bật tắt cửa sổ InteractUI
-    protected void EnableInteractUI(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
+    protected void EnableInteractUI(PeopleCtrl peopleCtrl)
     {
         interactUI.SetActive(!interactUI.activeInHierarchy);
-        mainUISetting.TurnOffDisplayPeople();
+        mainUISetting.infoPeopleUI.TurnOffDisplayPeople();
         vaccineIR.SetActive(false);
         if (interactUI.activeInHierarchy)
         {
             Debug.Log("Add listen");
             buttons[0].onClick.AddListener(() => TestCovid(peopleCtrl));
-            buttons[1].onClick.AddListener(() => TreatToPeople(doctorCtrl, peopleCtrl));
-            vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(doctorCtrl.doctorHealing.GetVaccineInfo(0), peopleCtrl));
-            vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(doctorCtrl.doctorHealing.GetVaccineInfo(1), peopleCtrl));
-            vaccineButtons[2].onClick.AddListener(() => VaccineToPeople(doctorCtrl.doctorHealing.GetVaccineInfo(2), peopleCtrl));
+            buttons[1].onClick.AddListener(() => TreatToPeople(peopleCtrl));
+            vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(0), peopleCtrl));
+            vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(1), peopleCtrl));
+            vaccineButtons[2].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(2), peopleCtrl));
         }
         else
         {
@@ -165,16 +165,16 @@ public class DoctorInteraction : MainBehaviour
     // Test Covid cho bệnh nhân
     protected void TestCovid(PeopleCtrl peopleCtrl)
     {
-        EnableInteractUI(null, null);
-        mainUISetting.TurnOnDisplayPeople();
-        mainUISetting.SetInfoNewPeople(peopleCtrl);
+        EnableInteractUI(null);
+        mainUISetting.infoPeopleUI.TurnOnDisplayPeople();
+        mainUISetting.infoPeopleUI.SetInfoNewPeople(peopleCtrl);
         
     }
 
     // Tiêm vaccine cho bệnh nhân
     protected void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
     {
-        EnableInteractUI(null, null);
+        EnableInteractUI(null);
 
         // Trả về khi số lượng vaccine <= 0
         if (vaccineInfo.quantily <= 0) return;
@@ -183,10 +183,10 @@ public class DoctorInteraction : MainBehaviour
     }
 
     // Chữa trị cho bệnh nhân
-    protected void TreatToPeople(DoctorCtrl doctorCtrl, PeopleCtrl peopleCtrl)
+    protected void TreatToPeople(PeopleCtrl peopleCtrl)
     {
-        EnableInteractUI(null, null);
+        EnableInteractUI( null);
 
-        peopleCtrl.peopleTreated.BeTreated(doctorCtrl);
+        peopleCtrl.peopleTreated.BeTreated();
     }
 }

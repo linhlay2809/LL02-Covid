@@ -44,7 +44,7 @@ public class PeopleInfected : MainBehaviour
         {
             this.peopleCtrl.peopleHealthInfo.VirusName = virusName;
 
-            SetMaxInfectionRate(PeopleManager.Instance.GetMaxIR((int)virusName) );
+            SetMaxInfectionRate(GameManager.Instance.GetMaxIR((int)virusName) );
 
             Debug.LogWarning(transform.name + " is infected virus "+ virusName);
         }
