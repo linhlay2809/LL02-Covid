@@ -7,5 +7,6 @@ using UnityEngine.UI;
 public class MainUISetting : MainBehaviour
 {
     public InfoPeopleUI infoPeopleUI;
-    
+    public InventoryUI inventoryUI;
+
 }

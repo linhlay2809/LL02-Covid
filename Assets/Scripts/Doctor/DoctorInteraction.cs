@@ -179,7 +179,7 @@ public class DoctorInteraction : MainBehaviour
         // Trả về khi số lượng vaccine <= 0
         if (vaccineInfo.quantily <= 0) return;
 
-        peopleCtrl.peopleTreated.Vaccination(vaccineInfo);
+        peopleCtrl.peopleTreated.Vaccination(vaccineInfo, mainUISetting);
     }
 
     // Chữa trị cho bệnh nhân
@@ -187,6 +187,6 @@ public class DoctorInteraction : MainBehaviour
     {
         EnableInteractUI( null);
 
-        peopleCtrl.peopleTreated.BeTreated();
+        peopleCtrl.peopleTreated.BeTreated(mainUISetting);
     }
 }
