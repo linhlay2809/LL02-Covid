@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResourceUI : MainBehaviour
 {
     [SerializeField] protected Resource moneyRes;
-    [SerializeField] protected IRResource infectionRateRes;
+    [SerializeField] protected Resource infectionRateRes;
     [SerializeField] protected Resource numberOfPeopleRes;
 
     [SerializeField] protected float waitingTime;
@@ -23,12 +23,18 @@ public class ResourceUI : MainBehaviour
         {
             currentTime = Time.time + waitingTime;
             DisplayIRRes();
+            DisplayNumberOfPeo();
         }
     }
 
     // Hiển thị thông số tỷ lệ lây nhiễm lên ResourceUI
     protected void DisplayIRRes()
     {
-        infectionRateRes.SetResText(PeopleManager.Instance.GetAllInfectionRate());
+        infectionRateRes.SetResText(PeopleManager.Instance.GetAllInfectionRate().ToString("0.##") + " / 100%");
+    }
+
+    protected void DisplayNumberOfPeo()
+    {
+        numberOfPeopleRes.SetResText(PeopleManager.Instance.GetAllPeople().ToString());
     }
 }

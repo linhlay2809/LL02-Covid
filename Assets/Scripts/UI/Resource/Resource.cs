@@ -8,8 +8,8 @@ public class Resource : MainBehaviour
     [SerializeField] protected TextMeshProUGUI resourceText;
 
     // Gán resourceText.text với thông số truyền vào value
-    public virtual void SetResText(float value)
+    public virtual void SetResText(string value)
     {
-        resourceText.text = value.ToString();
+        resourceText.text = value;
     }
 }

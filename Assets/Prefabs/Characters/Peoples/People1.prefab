@@ -397,9 +397,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   peopleCtrl: {fileID: 6688339202542525907}
-  virusName: 2
+  virusName: 0
   numberOfDoses: 0
-  infectionRate: 8
+  infectionRate: 0
   deathRate: 0
   beingTreated: 0
 --- !u!114 &8812591229695788488
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   peopleCtrl: {fileID: 6688339202542525907}
-  infectionRadius: 3
+  infectionRadius: 2.51
   WhatIsInfection:
     serializedVersion: 2
     m_Bits: 64

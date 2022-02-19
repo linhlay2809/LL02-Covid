@@ -49,6 +49,11 @@ public class PeopleManager : MainBehaviour
         return allIR * 100 / peopleCtrls.Count;
         
     }
+
+    public int GetAllPeople()
+    {
+        return peopleCtrls.Count;
+    }
 }
 
 

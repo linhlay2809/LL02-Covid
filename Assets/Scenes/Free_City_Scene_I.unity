@@ -2673,17 +2673,6 @@ Transform:
   m_Father: {fileID: 102047933}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &425594855 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8046024637975891248, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-  m_PrefabInstance: {fileID: 5705867508579464944}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d34265d1569f4042a6b0d7c71387732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &429737476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3024,17 +3013,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4444737114404570589, guid: abe16233ef9d0af4ba4dbccd5a19f0de, type: 3}
   m_PrefabInstance: {fileID: 474569856}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &475006773 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4782029345739657291, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-  m_PrefabInstance: {fileID: 5705867508579464944}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76dbedd3a741bf9479881493723a3675, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &479533370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4154,25 +4132,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 380032555}
     m_Modifications:
-    - target: {fileID: -2360075565942793283, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: peopleCtrl
-      value: 
-      objectReference: {fileID: 2040209407}
-    - target: {fileID: 5270939244016285753, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5270939244021509875, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_Name
       value: People1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270939244021509875, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5270939244021509875, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5270939244021871315, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_RootOrder
@@ -4217,50 +4179,6 @@ PrefabInstance:
     - target: {fileID: 5270939244021871315, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6688339202542525907, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: peopleInfeted
-      value: 
-      objectReference: {fileID: 1330606997}
-    - target: {fileID: 8812591229695788488, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: peopleCtrl
-      value: 
-      objectReference: {fileID: 2040209407}
-    - target: {fileID: 8812591229695788488, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: infectionRadius
-      value: 2.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812591229695788488, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: infectionDelayTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812591229695788488, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: WhatIsInfection.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: virusName
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: isInfected
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: infectionRate
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: virusInfo.name
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: virusInfo.virusName
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: virusInfo.infectionRate
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
@@ -7771,17 +7689,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7664135210524517136, guid: 9f857f559dc61a246bdb3a55c7daabd4, type: 3}
   m_PrefabInstance: {fileID: 988971316}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &994072229 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5755396308915659181, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-  m_PrefabInstance: {fileID: 5705867508579464944}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76dbedd3a741bf9479881493723a3675, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &999772666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5270939244021871315, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
@@ -10916,17 +10823,6 @@ Transform:
   m_Father: {fileID: 102047933}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1330606997 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -2360075565942793283, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-  m_PrefabInstance: {fileID: 613558262}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc63a42c0bf77c46aae875207c25ac3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1333310548 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3924976808640476839, guid: 8e16f4e5dd35f8047ae3506287a16bce, type: 3}
@@ -12193,6 +12089,10 @@ PrefabInstance:
       propertyPath: peopleTreated
       value: 
       objectReference: {fileID: 1551316669}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: virusName
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: infectionRate
       value: 0
@@ -13648,10 +13548,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: People3 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5270939244021509875, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5270939244021871315, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -13695,18 +13591,6 @@ PrefabInstance:
     - target: {fileID: 5270939244021871315, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: virusName
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: infectionRate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
-      propertyPath: reduceInfectionRate
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
@@ -16262,33 +16146,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1233593500}
     m_Modifications:
-    - target: {fileID: 2245322246371025780, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: m_Name
-      value: InfectionRate Res
+    - target: {fileID: 1382967270553756651, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: header
+      value: Infection Rate In City
       objectReference: {fileID: 0}
-    - target: {fileID: 4010521803732048142, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: m_Name
-      value: Money Res
-      objectReference: {fileID: 0}
-    - target: {fileID: 4118979902932264893, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: moneyRes
+    - target: {fileID: 1816569769407680183, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 475006773}
+      objectReference: {fileID: 21300000, guid: 30c2f434ea911bf4ca48fb291b955e97, type: 3}
     - target: {fileID: 4118979902932264893, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: waitingTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4118979902932264893, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: infectionRateRes
+    - target: {fileID: 5057396553462233879, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 425594855}
-    - target: {fileID: 4118979902932264893, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: numberOfPeopleRes
+      objectReference: {fileID: 21300000, guid: e02778e88b0cf5e40afcaad31d4b868b, type: 3}
+    - target: {fileID: 5126136752428418121, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -21.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453036127209114353, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 994072229}
-    - target: {fileID: 4191255300942407912, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: m_Name
-      value: NumberOfPeo Res
+      objectReference: {fileID: 21300000, guid: e686ab81cad1e7640a6349e881951267, type: 3}
+    - target: {fileID: 5453036127209114353, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5453036127209114353, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5482351239409059957, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: m_Pivot.x
@@ -16373,18 +16261,6 @@ PrefabInstance:
     - target: {fileID: 5482351239409059957, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5488747398534370891, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: header
-      value: Citywide infection rate
-      objectReference: {fileID: 0}
-    - target: {fileID: 7094004479141799306, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: m_isRightToLeft
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7577687350036307415, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
-      propertyPath: header
-      value: Number Of People In City
       objectReference: {fileID: 0}
     - target: {fileID: 8483908434682413047, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: m_Name
