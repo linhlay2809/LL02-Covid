@@ -62,6 +62,11 @@ public class PeopleHealthInfo : MainBehaviour
         SetRateToDeath(Random.Range(6, 10)); // Thời gian tử vong
     }
 
+    protected void Start()
+    {
+        infectionRate = GameManager.Instance.GetMaxIR((int)VirusName);
+        peopleCtrl.peopleInfected.SetMaxInfectionRate(GameManager.Instance.GetMaxIR((int)VirusName));
+    }
     protected override void Update()
     {
         if (this.VirusName == VirusName.noVirus) return;

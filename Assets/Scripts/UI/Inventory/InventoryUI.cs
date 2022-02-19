@@ -29,7 +29,8 @@ public class InventoryUI : MainBehaviour
         Debug.Log(transform.name + ": LoadItemList");
     }
 
-    public void DisplayIventory() // Hiển thị số lượng thuốc trên inventory
+    // Hiển thị số lượng thuốc trên inventory
+    public void DisplayIventory() 
     {
         GameManager gameManager = GameManager.Instance;
         items[0].DisplayItem(gameManager.GetMedicineInfo(0).quantily);

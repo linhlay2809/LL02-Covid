@@ -10,7 +10,6 @@ public class PeopleInfected : MainBehaviour
     [SerializeField] protected float maxInfectionRate;
 
 
-
     protected override void LoadComponents()
     {
         base.LoadComponents();

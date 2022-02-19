@@ -8,5 +8,5 @@ public class MainUISetting : MainBehaviour
 {
     public InfoPeopleUI infoPeopleUI;
     public InventoryUI inventoryUI;
-
+    public ResourceUI resourceUI;
 }
