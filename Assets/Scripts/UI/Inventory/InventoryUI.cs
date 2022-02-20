@@ -37,9 +37,9 @@ public class InventoryUI : MainBehaviour
         items[1].DisplayItem(gameManager.GetMedicineInfo(1).quantily);
         items[2].DisplayItem(gameManager.GetMedicineInfo(2).quantily);
         items[3].DisplayItem(gameManager.GetMedicineInfo(3).quantily);
-        items[4].DisplayItem(gameManager.GetVaccineInfo(0).quantily);
-        items[5].DisplayItem(gameManager.GetVaccineInfo(1).quantily);
-        items[6].DisplayItem(gameManager.GetVaccineInfo(2).quantily);
+        items[4].DisplayItem(gameManager.GetVaccineInfo(1).quantily);
+        items[5].DisplayItem(gameManager.GetVaccineInfo(2).quantily);
+        items[6].DisplayItem(gameManager.GetVaccineInfo(3).quantily);
     }
 
 }

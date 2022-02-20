@@ -4132,6 +4132,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 380032555}
     m_Modifications:
+    - target: {fileID: 4621237190311984460, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: defaultTTDeath
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5270939244021509875, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_Name
       value: People1
@@ -4837,9 +4841,12 @@ MonoBehaviour:
   - medicineName: 3
     quantily: 7
   vaccineInfos:
+  - vaccineName: 0
+    quantily: 0
+    protectionRate: 0
   - vaccineName: 1
     quantily: 3
-    protectionRate: 0
+    protectionRate: 2
   - vaccineName: 2
     quantily: 5
     protectionRate: 0
@@ -12013,6 +12020,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: waitingTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: infectionRate
       value: 0
       objectReference: {fileID: 0}
@@ -12032,6 +12043,10 @@ PrefabInstance:
     - target: {fileID: 2040209401, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4621237190311984460, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: vaccine
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5270939244021509875, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_Name
@@ -12089,12 +12104,20 @@ PrefabInstance:
       propertyPath: peopleTreated
       value: 
       objectReference: {fileID: 1551316669}
+    - target: {fileID: 8812591229695788488, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: infectionRadius
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: virusName
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: infectionRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9081241033314789467, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: numberOfDoses
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13544,6 +13567,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 380032555}
     m_Modifications:
+    - target: {fileID: 4621237190311984460, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
+      propertyPath: vaccine
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5270939244021509875, guid: 13717ccd7248bac449d884524bf0c09e, type: 3}
       propertyPath: m_Name
       value: People3 (1)
@@ -15646,6 +15673,10 @@ PrefabInstance:
       propertyPath: header
       value: Delta Medicine
       objectReference: {fileID: 0}
+    - target: {fileID: 525223883, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
+      propertyPath: content
+      value: Used to treat Delta Virus
+      objectReference: {fileID: 0}
     - target: {fileID: 722552480838177636, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
       propertyPath: m_Name
       value: InventoryUI
@@ -15822,6 +15853,10 @@ PrefabInstance:
       propertyPath: header
       value: Beta Medicine
       objectReference: {fileID: 0}
+    - target: {fileID: 5510267666526500406, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
+      propertyPath: content
+      value: Used to treat Beta Virus
+      objectReference: {fileID: 0}
     - target: {fileID: 6426324385463961707, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15841,6 +15876,10 @@ PrefabInstance:
     - target: {fileID: 7349208675986750063, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
       propertyPath: header
       value: Gamma Medicine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349208675986750063, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
+      propertyPath: content
+      value: Used to treat Gamma Virus
       objectReference: {fileID: 0}
     - target: {fileID: 7402853496335730519, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
       propertyPath: m_AnchorMax.y
@@ -15865,6 +15904,10 @@ PrefabInstance:
     - target: {fileID: 8039300290370135198, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
       propertyPath: header
       value: Alpha Medicine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039300290370135198, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
+      propertyPath: content
+      value: Used to treat Alpha Virus
       objectReference: {fileID: 0}
     - target: {fileID: 8045232968391271238, guid: 96a45e32874362247b03238c2ef832dc, type: 3}
       propertyPath: header
@@ -15893,19 +15936,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270275436659208828, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 56.19
       objectReference: {fileID: 0}
     - target: {fileID: 1270275436659208828, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 17.88
       objectReference: {fileID: 0}
     - target: {fileID: 1270275436659208828, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 38.095
       objectReference: {fileID: 0}
     - target: {fileID: 1270275436659208828, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -38.579998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270275436659208829, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
+      propertyPath: m_text
+      value: Content
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270275436659208829, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270275436659208829, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077804, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_Name
@@ -15917,11 +15972,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.8852077
+      value: 0.45882136
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_Pivot.y
-      value: 2.106017
+      value: 1.0849195
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_RootOrder
@@ -15945,11 +16000,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 291.87
+      value: 76.39
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 65.89
+      value: 52.519997
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15981,11 +16036,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 739.59875
+      value: -79.06299
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1734.4985
+      value: 631.713
       objectReference: {fileID: 0}
     - target: {fileID: 1270275437123077805, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16003,6 +16058,14 @@ PrefabInstance:
       propertyPath: rectTransform
       value: 
       objectReference: {fileID: 1457191679}
+    - target: {fileID: 1270275437123077970, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
+      propertyPath: characterWrapLimit
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270275437123077971, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1270275438375983466, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16013,19 +16076,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270275438375983466, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 56.39
       objectReference: {fileID: 0}
     - target: {fileID: 1270275438375983466, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 29.64
       objectReference: {fileID: 0}
     - target: {fileID: 1270275438375983466, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 38.195
       objectReference: {fileID: 0}
     - target: {fileID: 1270275438375983466, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -14.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270275438375983467, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
+      propertyPath: m_text
+      value: 'Header '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270275438375983467, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270275438375983467, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f78f6b223eabf9046a0f0382a8bd4ab2, type: 3}
@@ -16148,7 +16223,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1382967270553756651, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: header
-      value: Infection Rate In City
+      value: Citywide Infection Rate (%)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382967270553756651, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: content
+      value: Shows infection rate information in the city
       objectReference: {fileID: 0}
     - target: {fileID: 1816569769407680183, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: m_Sprite
@@ -16157,6 +16236,14 @@ PrefabInstance:
     - target: {fileID: 4118979902932264893, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: waitingTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731482776257226669, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: header
+      value: Money ($)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731482776257226669, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: content
+      value: Used to buy, sell and exchange items in the city
       objectReference: {fileID: 0}
     - target: {fileID: 5057396553462233879, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: m_Sprite
@@ -16261,6 +16348,14 @@ PrefabInstance:
     - target: {fileID: 5482351239409059957, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488747398534370891, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: header
+      value: Number Of People
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488747398534370891, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
+      propertyPath: content
+      value: Total number of people in the city
       objectReference: {fileID: 0}
     - target: {fileID: 8483908434682413047, guid: 96f640b02e468704a9750bcda7d5cb4a, type: 3}
       propertyPath: m_Name

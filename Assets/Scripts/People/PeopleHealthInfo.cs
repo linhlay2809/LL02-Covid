@@ -11,8 +11,10 @@ public class PeopleHealthInfo : MainBehaviour
     [SerializeField] protected Dose numberOfDoses;
     [Tooltip("Tỷ lệ lây nhiễm")]
     [SerializeField] protected float infectionRate;
-    [Tooltip("Tỷ lệ tử vong")]
+
+    [Header("Death Rate Details")] [Tooltip("Tỷ lệ tử vong")]
     [SerializeField] protected float deathRate;
+    [SerializeField] protected float waitingTime;[Space]
     [Tooltip("Đang chữa trị")]
     [SerializeField] protected bool beingTreated = false;
     protected float rateToDeath;
@@ -59,13 +61,13 @@ public class PeopleHealthInfo : MainBehaviour
     }
     protected override void Awake()
     {
-        SetRateToDeath(Random.Range(6, 10)); // Thời gian tử vong
+        
     }
 
     protected void Start()
     {
         infectionRate = GameManager.Instance.GetMaxIR((int)VirusName);
-        peopleCtrl.peopleInfected.SetMaxInfectionRate(GameManager.Instance.GetMaxIR((int)VirusName));
+        peopleCtrl.peopleInfected.SetMaxInfectionRate(infectionRate);
     }
     protected override void Update()
     {
@@ -82,12 +84,6 @@ public class PeopleHealthInfo : MainBehaviour
 
     }
 
-    // Gán thời gian tử vong và tỷ lệ % tăng sau mỗi giây
-    public void SetRateToDeath(float timeToDeath)
-    {
-        this.peopleCtrl.peopleTreated.SetTimeToDeath(timeToDeath);
-        rateToDeath = (100f / (timeToDeath * 60f)); // Tỷ lệ tử vong sau 1 giây
-    }
     
     // Gán giá trị bool cho BeingTreated
     public void SetBeingTreated(bool value)
@@ -112,6 +108,7 @@ public class PeopleHealthInfo : MainBehaviour
             SetBeingTreated(false);
             this.InfectionRate = 0f;
             this.deathRate = 0f;
+            peopleCtrl.peopleTreated.ResetTimeToDeath();
         }
     }
 
@@ -120,8 +117,8 @@ public class PeopleHealthInfo : MainBehaviour
     {
         if (Time.time > this.currentDelayTime)
         {
-            this.currentDelayTime = Time.time + 1f;
-            AddDeathRate(rateToDeath);
+            this.currentDelayTime = Time.time + this.waitingTime;
+            AddDeathRate(100f / (peopleCtrl.peopleTreated.GetTimeToDeath() * 60f));
         }
     }
 

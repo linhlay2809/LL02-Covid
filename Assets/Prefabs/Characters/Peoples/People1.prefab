@@ -401,6 +401,7 @@ MonoBehaviour:
   numberOfDoses: 0
   infectionRate: 0
   deathRate: 0
+  waitingTime: 1
   beingTreated: 0
 --- !u!114 &8812591229695788488
 MonoBehaviour:
@@ -450,6 +451,7 @@ MonoBehaviour:
   vaccine: 0
   reduceInfectionRate: 0
   timeToDeath: 0
+  defaultTTDeath: 5
 --- !u!114 &-1092021395096274124
 MonoBehaviour:
   m_ObjectHideFlags: 0

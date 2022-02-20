@@ -9,14 +9,22 @@ public class PeopleTreated : MainBehaviour
     [SerializeField] protected VaccineName vaccine;
     [Tooltip("Tỷ lệ giảm khi bị nhiễm")]
     [SerializeField] protected float reduceInfectionRate = 0;
+    [Header("Time To Death Details")]
     [Tooltip("Thời gian tử vong")]
     [SerializeField] protected float timeToDeath;
+    [SerializeField] protected float defaultTTDeath;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         LoadPeopleCtrl();
     }
+
+    protected override void Awake()
+    {
+        ResetTimeToDeath();
+    }
+
     public VaccineName Vaccine
     {
         get { return vaccine; }
@@ -31,10 +39,20 @@ public class PeopleTreated : MainBehaviour
         Debug.Log(transform.name + ": LoadPeopleCtrl");
     }
 
-    // Set thời gian tử vong
-    public void SetTimeToDeath(float value)
+    public float GetTimeToDeath()
     {
-        this.timeToDeath = value;
+        return this.timeToDeath;
+    }
+
+    // Set thời gian tử vong
+    public void ResetTimeToDeath()
+    {
+        this.timeToDeath = this.defaultTTDeath;
+    }
+
+    public void AddTimeToDeath(float value)
+    {
+        this.timeToDeath += value;
     }
 
     // Set giảm tỷ lệ lây nhiễm khi tiêm vaccine
@@ -77,8 +95,8 @@ public class PeopleTreated : MainBehaviour
             this.Vaccine = vaccineInfo.vaccineName;
             this.SetReduceInfectionRate(vaccineInfo.protectionRate);
 
-            this.peopleCtrl.peopleHealthInfo.NumberOfDoses += 1;
-            GameManager.Instance.AddVaccineQuantily((int)vaccineInfo.vaccineName - 1, -1); // Cập nhật số lượng vaccine
+            this.peopleCtrl.peopleHealthInfo.NumberOfDoses += 1; // Thêm số mũi tiêm 
+            GameManager.Instance.AddVaccineQuantily((int)vaccineInfo.vaccineName, -1); // Cập nhật số lượng vaccine
 
             mainUI.inventoryUI.DisplayIventory();
             //vaccineInfo.quantily -= 1;

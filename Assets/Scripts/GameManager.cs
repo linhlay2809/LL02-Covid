@@ -33,10 +33,12 @@ public class GameManager : MainBehaviour
     {
         return virusInfos[index].maxInfectionRate;
     }
+
+    // Load VaccineInfos trên inspector
     protected void LoadVaccineInfos()
     {
         if (vaccineInfos.Count != 0) return;
-        for (int i = 1; i < Enum.GetNames(typeof(VaccineName)).Length; i++)
+        for (int i = 0; i < Enum.GetNames(typeof(VaccineName)).Length; i++)
         {
             VaccineInfo info = new VaccineInfo() 
             { 
@@ -70,6 +72,24 @@ public class GameManager : MainBehaviour
     public VaccineInfo GetVaccineInfo(int vaccineIndex)
     {
         return vaccineInfos[vaccineIndex];
+    }
+
+    // Get vaccineInfos với VaccineName truyền vào
+    public VaccineInfo GetVaccineInfoByName(VaccineName name)
+    {
+        switch ((int)name)
+        {
+            case 0:
+                return vaccineInfos[0];
+            case 1:
+                return vaccineInfos[1];
+            case 2:
+                return vaccineInfos[2];
+            case 3:
+                return vaccineInfos[3];
+            default:
+                return null;
+        }
     }
 
     // Thêm số lượng thuốc

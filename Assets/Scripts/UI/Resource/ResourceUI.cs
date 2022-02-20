@@ -30,7 +30,7 @@ public class ResourceUI : MainBehaviour
     // Hiển thị thông số tỷ lệ lây nhiễm lên ResourceUI
     protected void DisplayIRRes()
     {
-        infectionRateRes.SetResText(PeopleManager.Instance.GetAllInfectionRate().ToString("0.##") + " / 100%");
+        infectionRateRes.SetResText(PeopleManager.Instance.GetAllInfectionRate().ToString("0.##") + " / 100");
     }
 
     protected void DisplayNumberOfPeo()

@@ -141,9 +141,9 @@ public class DoctorInteraction : MainBehaviour
             Debug.Log("Add listen");
             buttons[0].onClick.AddListener(() => TestCovid(peopleCtrl));
             buttons[1].onClick.AddListener(() => TreatToPeople(peopleCtrl));
-            vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(0), peopleCtrl));
-            vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(1), peopleCtrl));
-            vaccineButtons[2].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(2), peopleCtrl));
+            vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(1), peopleCtrl));
+            vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(2), peopleCtrl));
+            vaccineButtons[2].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(3), peopleCtrl));
         }
         else
         {
