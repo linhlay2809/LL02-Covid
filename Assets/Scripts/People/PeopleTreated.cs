@@ -68,7 +68,7 @@ public class PeopleTreated : MainBehaviour
     }
 
     // Được chưa trị 
-    public void BeTreated(MainUISetting mainUI)
+    public void BeTreated()
     {
 
         if (peopleCtrl.peopleHealthInfo.GetBeTreated()) return;
@@ -81,11 +81,13 @@ public class PeopleTreated : MainBehaviour
 
         GameManager.Instance.AddMedicineQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
 
-        mainUI.inventoryUI.DisplayIventory();
+        MainUISetting.Instance.inventoryUI.DisplayIventory();
+
+        MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10);
     }
 
     // Được tiêm vaccine
-    public void Vaccination(VaccineInfo vaccineInfo, MainUISetting mainUI)
+    public void Vaccination(VaccineInfo vaccineInfo)
     {
         if ((int)this.peopleCtrl.peopleHealthInfo.NumberOfDoses == 2) return; // Trả về khi tiêm đủ 2 mũi
         if (this.peopleCtrl.peopleHealthInfo.VirusName != VirusName.noVirus) return; // Trả về khi đã bị nhiễm bệnh
@@ -98,8 +100,9 @@ public class PeopleTreated : MainBehaviour
             this.peopleCtrl.peopleHealthInfo.NumberOfDoses += 1; // Thêm số mũi tiêm 
             GameManager.Instance.AddVaccineQuantily((int)vaccineInfo.vaccineName, -1); // Cập nhật số lượng vaccine
 
-            mainUI.inventoryUI.DisplayIventory();
-            //vaccineInfo.quantily -= 1;
+            MainUISetting.Instance.inventoryUI.DisplayIventory();
+
+            MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10);
         }
     }
 

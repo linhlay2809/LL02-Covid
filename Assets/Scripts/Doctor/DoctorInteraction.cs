@@ -9,7 +9,6 @@ public class DoctorInteraction : MainBehaviour
     [HideInInspector]
     public DoctorCtrl doctorCtrl;
     [SerializeField] protected Transform canvas;
-    [SerializeField] protected MainUISetting mainUISetting;
     [SerializeField] protected GameObject interactUI;
     [SerializeField] protected GameObject hintUI;
 
@@ -23,7 +22,6 @@ public class DoctorInteraction : MainBehaviour
         base.LoadComponents();
         LoadDoctorCtrl();
         LoadCanvas();
-        LoadMainUISetting();
         LoadInteractUI();
         LoadHintUI();
         LoadButtons();
@@ -45,11 +43,6 @@ public class DoctorInteraction : MainBehaviour
         this.canvas = transform.GetChild(3);
     }
 
-    protected void LoadMainUISetting()
-    {
-        if(mainUISetting != null) return;
-        mainUISetting = GameObject.Find("MainUI").GetComponent<MainUISetting>();
-    }
     // Load InteractUI trên inspector
     protected void LoadInteractUI()
     {
@@ -92,6 +85,7 @@ public class DoctorInteraction : MainBehaviour
     protected void Start()
     {
         vaccineIR = interactUI.transform.GetChild(1).gameObject; // Gán object vaccineInteractUI vào inspector khi startGame
+        buttons[2].onClick.AddListener(() => OnOffVaccineInteract());
     }
     protected override void FixedUpdate()
     {
@@ -134,11 +128,13 @@ public class DoctorInteraction : MainBehaviour
     protected void EnableInteractUI(PeopleCtrl peopleCtrl)
     {
         interactUI.SetActive(!interactUI.activeInHierarchy);
-        mainUISetting.infoPeopleUI.TurnOffDisplayPeople();
+        MainUISetting.Instance.infoPeopleUI.TurnOffDisplayPeople();
         vaccineIR.SetActive(false);
         if (interactUI.activeInHierarchy)
         {
             Debug.Log("Add listen");
+            doctorCtrl.controller.SwitchIsMoving();
+
             buttons[0].onClick.AddListener(() => TestCovid(peopleCtrl));
             buttons[1].onClick.AddListener(() => TreatToPeople(peopleCtrl));
             vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(1), peopleCtrl));
@@ -148,6 +144,8 @@ public class DoctorInteraction : MainBehaviour
         else
         {
             Debug.Log("Remove");
+            doctorCtrl.controller.SwitchIsMoving();
+
             buttons[0].onClick.RemoveAllListeners();
             buttons[1].onClick.RemoveAllListeners();
             vaccineButtons[0].onClick.RemoveAllListeners();
@@ -156,7 +154,7 @@ public class DoctorInteraction : MainBehaviour
         }
     }
 
-    // SetActive interactVaccineUI when vaccineButton is click
+    // Bật tắt VaccineUI
     public void OnOffVaccineInteract()
     {
         vaccineIR.SetActive(!vaccineIR.activeInHierarchy);
@@ -166,8 +164,8 @@ public class DoctorInteraction : MainBehaviour
     protected void TestCovid(PeopleCtrl peopleCtrl)
     {
         EnableInteractUI(null);
-        mainUISetting.infoPeopleUI.TurnOnDisplayPeople();
-        mainUISetting.infoPeopleUI.SetInfoNewPeople(peopleCtrl);
+        MainUISetting.Instance.infoPeopleUI.TurnOnDisplayPeople();
+        MainUISetting.Instance.infoPeopleUI.SetInfoNewPeople(peopleCtrl);
         
     }
 
@@ -179,7 +177,7 @@ public class DoctorInteraction : MainBehaviour
         // Trả về khi số lượng vaccine <= 0
         if (vaccineInfo.quantily <= 0) return;
 
-        peopleCtrl.peopleTreated.Vaccination(vaccineInfo, mainUISetting);
+        peopleCtrl.peopleTreated.Vaccination(vaccineInfo);
     }
 
     // Chữa trị cho bệnh nhân
@@ -187,6 +185,6 @@ public class DoctorInteraction : MainBehaviour
     {
         EnableInteractUI( null);
 
-        peopleCtrl.peopleTreated.BeTreated(mainUISetting);
+        peopleCtrl.peopleTreated.BeTreated();
     }
 }

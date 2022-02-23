@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MainBehaviour
 {
-    private Rigidbody _rigidbodyPlayer;
     private Animator _anim;
     private Transform _groundChecker;
     [SerializeField] protected bool isMoving = true;
@@ -18,9 +17,13 @@ public class PlayerController : MainBehaviour
     private void Start()
     {
         Physics.gravity *= 1.5f;
-        _rigidbodyPlayer = gameObject.GetComponent<Rigidbody>();
         _groundChecker = transform.GetChild(0);
         _anim = gameObject.GetComponent<Animator>();
+    }
+
+    public void SwitchIsMoving()
+    {
+        this.isMoving = !this.isMoving;
     }
 
     protected override void Update()
@@ -43,10 +46,6 @@ public class PlayerController : MainBehaviour
         }
         MovementAnimator(horizontalInput, verticalInput);
 
-        //if (Input.GetButtonDown("Jump") && _isGrounded)
-        //{
-        //    _rigidbodyPlayer.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
-        //}
     }
 
     void MovementAnimator(float horizontal, float vertical)

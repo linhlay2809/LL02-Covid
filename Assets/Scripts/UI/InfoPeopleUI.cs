@@ -21,6 +21,8 @@ public class InfoPeopleUI : MainBehaviour
     public void SetInfoNewPeople(PeopleCtrl peopleCtrl)
     {
         this.peopleCtrl = peopleCtrl;
+
+        MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10);
     }
 
     protected override void Update()
