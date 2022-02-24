@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f944ba964431d404c88c2c43fd1fff6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  morelaSlider: {fileID: 7387086515193558357}
+  moraleSlider: {fileID: 0}
   energySlider: {fileID: 977778046874758133}
 --- !u!1 &7387086515350694368
 GameObject:

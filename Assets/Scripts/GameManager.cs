@@ -13,7 +13,9 @@ public class GameManager : MainBehaviour
 
     [SerializeField] protected List<VirusInfo> virusInfos;
     [SerializeField] protected List<MedicineInfo> medicineInfos;
+    [SerializeField] protected List<PotionInfos> potionInfos;
     [SerializeField] protected List<VaccineInfo> vaccineInfos;
+
 
     private static GameManager instance;
 
@@ -25,6 +27,7 @@ public class GameManager : MainBehaviour
         LoadAvatarPeople();
         LoadVirusInfos();
         LoadMedicineInfos();
+        LoadPotionInfos();
         LoadVaccineInfos();
     }
     
@@ -61,7 +64,27 @@ public class GameManager : MainBehaviour
             medicineInfos.Add(info);
         }
     }
+    
+    // Load PotionInfo trên inspecter
+    protected void LoadPotionInfos()
+    {
+        if (potionInfos.Count != 0) return;
+        for (int i = 0; i < Enum.GetNames(typeof(PotionName)).Length; i++)
+        {
+            PotionInfos info = new PotionInfos() 
+            { 
+                potionName = (PotionName)Enum.ToObject(typeof(PotionName), i) 
+            };
+            potionInfos.Add(info);
+        }
+    }
 
+    // Get MedicineInfo
+    public PotionInfos GetPotionInfo(int potionIndex)
+    {
+        return potionInfos[potionIndex];
+    }
+    
     // Get MedicineInfo
     public MedicineInfo GetMedicineInfo(int medicineIndex)
     {

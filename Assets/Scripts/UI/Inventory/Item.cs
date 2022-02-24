@@ -6,7 +6,6 @@ using TMPro;
 
 public class Item : MainBehaviour
 {
-    [SerializeField] protected Image itemImage;
     [SerializeField] protected TMP_Text itemQuanlity;
     [SerializeField] protected GameObject emptyItemBG;
     

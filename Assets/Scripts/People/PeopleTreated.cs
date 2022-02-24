@@ -83,7 +83,7 @@ public class PeopleTreated : MainBehaviour
 
         MainUISetting.Instance.inventoryUI.DisplayIventory();
 
-        MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10);
+        MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10); // Giảm chỉ số năng lượng
     }
 
     // Được tiêm vaccine
@@ -102,7 +102,7 @@ public class PeopleTreated : MainBehaviour
 
             MainUISetting.Instance.inventoryUI.DisplayIventory();
 
-            MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10);
+            MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10); // Giảm chỉ số năng lượng
         }
     }
 
