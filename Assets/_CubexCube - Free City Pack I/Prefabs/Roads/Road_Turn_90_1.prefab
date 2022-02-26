@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 4407513544288811794}
   - component: {fileID: 1931575292059340760}
   - component: {fileID: 7262311815777678859}
+  - component: {fileID: 4035020434494683904}
+  - component: {fileID: 2327032716983882519}
+  - component: {fileID: 4150254167631487583}
   m_Layer: 0
   m_Name: Road_Turn_90_1
   m_TagString: Untagged
@@ -93,5 +96,44 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 0.24688129, z: 12.999999}
-  m_Center: {x: -6.499997, y: 0.123438545, z: 6.4999986}
+  m_Size: {x: 13, y: 0.0032829046, z: 12.999999}
+  m_Center: {x: -6.499997, y: 0.0016393512, z: 6.4999986}
+--- !u!65 &4035020434494683904
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130227319832964621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1735568, y: 0.24688025, z: 12.998253}
+  m_Center: {x: -1.0868375, y: 0.123439066, z: 6.499179}
+--- !u!65 &2327032716983882519
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130227319832964621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.83745, y: 0.24688025, z: 2.169437}
+  m_Center: {x: -7.5880537, y: 0.123439066, z: 1.0847709}
+--- !u!65 &4150254167631487583
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130227319832964621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9566975, y: 0.24688025, z: 1.9483757}
+  m_Center: {x: -12.02843, y: 0.123439066, z: 12.0057335}

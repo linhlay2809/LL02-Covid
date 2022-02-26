@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 475613764393476125}
   - component: {fileID: 2413172365289936087}
   - component: {fileID: 3253350917266033396}
+  - component: {fileID: 7475814332627836506}
+  - component: {fileID: 6793417200599792813}
   m_Layer: 0
   m_Name: Road_With_Band_Half_Without_Border_2
   m_TagString: Untagged
@@ -93,5 +95,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13, y: 0.24688025, z: 6.5}
-  m_Center: {x: -6.5, y: 0.123439066, z: 3.25}
+  m_Size: {x: 13, y: 0.04, z: 6.5}
+  m_Center: {x: -6.5, y: 0, z: 3.25}
+--- !u!65 &7475814332627836506
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214721687059100930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1735566, y: 0.24688025, z: 6.5}
+  m_Center: {x: -1.0868375, y: 0.123439066, z: 3.2500527}
+--- !u!65 &6793417200599792813
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214721687059100930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1735566, y: 0.24688025, z: 6.5}
+  m_Center: {x: -11.92, y: 0.123439066, z: 3.2500527}

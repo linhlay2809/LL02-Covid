@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 393282058283026923}
   - component: {fileID: 2490983979083005217}
   - component: {fileID: 7612924931412357211}
+  - component: {fileID: 2052877830}
+  - component: {fileID: 2052877829}
   m_Layer: 0
   m_Name: Road_Pedastrian_Half
   m_TagString: Untagged
@@ -93,5 +95,31 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.999999, y: 0.24688025, z: 6.5}
-  m_Center: {x: -6.4999986, y: 0.123439066, z: 3.25}
+  m_Size: {x: 2.1735566, y: 0.24688025, z: 6.5}
+  m_Center: {x: -1.0868375, y: 0.123439066, z: 3.2500527}
+--- !u!65 &2052877830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148163574776323316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.999998, y: 0.006242469, z: 6.499999}
+  m_Center: {x: -6.500213, y: 0.0016622022, z: 3.2501075}
+--- !u!65 &2052877829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148163574776323316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1735566, y: 0.24688025, z: 6.5}
+  m_Center: {x: -11.92, y: 0.123439066, z: 3.2500527}

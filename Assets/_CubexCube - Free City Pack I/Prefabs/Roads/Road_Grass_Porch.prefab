@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1094898165123098327}
   - component: {fileID: 2942305611858268701}
   - component: {fileID: 8966473033519512308}
+  - component: {fileID: 3570493187350189309}
   m_Layer: 0
   m_Name: Road_Grass_Porch
   m_TagString: Untagged
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13.000003, y: 0.000002117969, z: 13.000146}
   m_Center: {x: -6.5000014, y: -0.000001058984, z: 6.49993}
+--- !u!65 &3570493187350189309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3735128055754847176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.2366657, y: 0.24688025, z: 11.089624}
+  m_Center: {x: -6.521731, y: 0.123439066, z: 5.544865}
