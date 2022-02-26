@@ -23,15 +23,46 @@ public class WaypointNavigator : MonoBehaviour
     {
         if (controller.reachedDestination)
         {
-            if (direction == 0)
+            bool shouldBranch = false;
+
+            if (currentWaypoint.branches != null && currentWaypoint.branches.Count > 0)
             {
-                currentWaypoint = currentWaypoint.nextWaypoint;
+                shouldBranch = Random.Range(0f,1f) <= currentWaypoint.branchRatio ? true : false;
             }
-            else if (direction == 1)
+            if (shouldBranch)
             {
-                currentWaypoint = currentWaypoint.previousWaypoint;
+                currentWaypoint = currentWaypoint.branches[Random.Range(0, currentWaypoint.branches.Count - 1)];
             }
+            else
+            {
+                if (direction == 0)
+                {
+                    if (currentWaypoint.nextWaypoint != null)
+                    {
+                        currentWaypoint = currentWaypoint.nextWaypoint;
+                    }
+                    else
+                    {
+                        currentWaypoint = currentWaypoint.previousWaypoint;
+                        direction = 1;
+                    }
+                }
+                else if (direction == 1)
+                {
+                    if (currentWaypoint.previousWaypoint != null)
+                    {
+                        currentWaypoint = currentWaypoint.previousWaypoint;
+                    }
+                    else
+                    {
+                        currentWaypoint = currentWaypoint.nextWaypoint;
+                        direction = 0;
+                    }
+                }
+            }
+
             controller.SetDestination(currentWaypoint.GetPosition());
+
         }
     }
 }

@@ -127,6 +127,7 @@ public class DoctorInteraction : MainBehaviour
     // Bật tắt cửa sổ InteractUI
     protected void EnableInteractUI(PeopleCtrl peopleCtrl)
     {
+
         interactUI.SetActive(!interactUI.activeInHierarchy);
         MainUISetting.Instance.infoPeopleUI.TurnOffDisplayPeople();
         vaccineIR.SetActive(false);

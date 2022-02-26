@@ -37,6 +37,7 @@ public class PeopleManager : MainBehaviour
     // Xử lý phép tính tổng tỷ lệ lây nhiễm của thành phố và trả về kết quả
     public float GetAllInfectionRate()
     {
+        
         float allIR = 0f; 
         foreach (PeopleCtrl peopleCtrl in peopleCtrls)
         {
@@ -53,6 +54,11 @@ public class PeopleManager : MainBehaviour
     public int GetAllPeople()
     {
         return peopleCtrls.Count;
+    }
+
+    public void AddPepleToList(GameObject newPeople)
+    {
+        peopleCtrls.Add(newPeople.GetComponent<PeopleCtrl>());
     }
 }
 

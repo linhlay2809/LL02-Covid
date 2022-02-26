@@ -28,7 +28,12 @@ public class PlayerController : MainBehaviour
 
     protected override void Update()
     {
-        if (!isMoving) return;
+        if (!isMoving)
+        {
+            _anim.SetFloat("Speed_f", 0f);
+            return;
+        }
+        
         _isGrounded = Physics.CheckSphere(_groundChecker.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
 
         float horizontalInput = Input.GetAxis("Horizontal");

@@ -19,7 +19,7 @@ public class WaypointEditor
             Gizmos.color = Color.yellow * 0.5f;
         }
 
-        Gizmos.DrawSphere(waypoint.transform.position, .1f);
+        Gizmos.DrawSphere(waypoint.transform.position, .2f);
 
         Gizmos.color = Color.white;
         Gizmos.DrawLine(waypoint.transform.position + (waypoint.transform.right * waypoint.width / 2f),
@@ -40,6 +40,14 @@ public class WaypointEditor
             Vector3 offsetTo = waypoint.nextWaypoint.transform.right * -waypoint.nextWaypoint.width / 2f;
 
             Gizmos.DrawLine(waypoint.transform.position + offset, waypoint.nextWaypoint.transform.position + offsetTo);
+        }
+        if (waypoint.branches != null)
+        {
+            foreach (Waypoint branch in waypoint.branches)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(waypoint.transform.position, branch.transform.position);
+            }
         }
 
     }

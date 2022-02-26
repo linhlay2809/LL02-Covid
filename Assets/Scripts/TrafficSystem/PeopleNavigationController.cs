@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PeopleNavigationController : MonoBehaviour
 {
+    [SerializeField] protected Animator animator;
+
     public float movementSpeed;
     public float rotationSpeed;
     public float stopDistance;
     public Vector3 destination;
     public bool reachedDestination;
-    public Vector3 velocity;
-    public Vector3 lastPosition;
-    void Start()
+    private void Awake()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -36,14 +36,16 @@ public class PeopleNavigationController : MonoBehaviour
             {
                 reachedDestination = true;
             }
-
-            velocity = (transform.position - lastPosition) / Time.deltaTime;
-            velocity.y = 0;
-            var velocityMagnitude = velocity.magnitude;
-            velocity = velocity.normalized;
-            var fwdDotProduct = Vector3.Dot(transform.forward, velocity);
-            var rightDotProduct = Vector3.Dot(transform.right, velocity);
-
+            
+            if (transform.position != Vector3.zero)
+            {
+                animator.SetFloat("Speed_f", 0.3f);
+            }
+            else
+            {
+                animator.SetFloat("Speed_f", 0f);
+            }
+            
         }
     }
 
