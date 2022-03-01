@@ -110,6 +110,7 @@ public class DoctorInteraction : MainBehaviour
             {
                 PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
                 if (peopleCtrl == null) return;
+                peopleCtrl.peopleNavCtrl.SetIsMoving(false);
                 EnableInteractUI(peopleCtrl);
             }
             hintUI.SetActive(true);
@@ -129,11 +130,11 @@ public class DoctorInteraction : MainBehaviour
     {
 
         interactUI.SetActive(!interactUI.activeInHierarchy);
-        MainUISetting.Instance.infoPeopleUI.TurnOffDisplayPeople();
         vaccineIR.SetActive(false);
         if (interactUI.activeInHierarchy)
         {
             Debug.Log("Add listen");
+            MainUISetting.Instance.infoPeopleUI.TurnOffDisplayPeople();
             doctorCtrl.controller.SwitchIsMoving();
 
             buttons[0].onClick.AddListener(() => TestCovid(peopleCtrl));
@@ -145,6 +146,8 @@ public class DoctorInteraction : MainBehaviour
         else
         {
             Debug.Log("Remove");
+            peopleCtrl.peopleNavCtrl.SetIsMoving(true);
+
             doctorCtrl.controller.SwitchIsMoving();
 
             buttons[0].onClick.RemoveAllListeners();
@@ -164,28 +167,44 @@ public class DoctorInteraction : MainBehaviour
     // Test Covid cho bệnh nhân
     protected void TestCovid(PeopleCtrl peopleCtrl)
     {
-        EnableInteractUI(null);
+        peopleCtrl.peopleInfo.IsTested = true;
+
         MainUISetting.Instance.infoPeopleUI.TurnOnDisplayPeople();
-        MainUISetting.Instance.infoPeopleUI.SetInfoNewPeople(peopleCtrl);
-        
+        MainUISetting.Instance.infoPeopleUI.SetNewInfoPeople(peopleCtrl);
+
+        EnableInteractUI(peopleCtrl);
     }
 
     // Tiêm vaccine cho bệnh nhân
     protected void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
     {
-        EnableInteractUI(null);
+        if (!peopleCtrl.peopleInfo.IsTested)
+        {
+            GameManager.Instance.FindAndShowNotify(NotifyName.notTestedVirus);
+            return;
+        }
 
         // Trả về khi số lượng vaccine <= 0
         if (vaccineInfo.quantily <= 0) return;
 
         peopleCtrl.peopleTreated.Vaccination(vaccineInfo);
+
+        EnableInteractUI(peopleCtrl);
     }
 
     // Chữa trị cho bệnh nhân
     protected void TreatToPeople(PeopleCtrl peopleCtrl)
     {
-        EnableInteractUI( null);
-
+        if (!peopleCtrl.peopleInfo.IsTested)
+        {
+            GameManager.Instance.FindAndShowNotify(NotifyName.notTestedVirus);
+            return;
+        }
         peopleCtrl.peopleTreated.BeTreated();
+
+        EnableInteractUI(peopleCtrl);
+
+        
+
     }
 }

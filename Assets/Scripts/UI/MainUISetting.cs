@@ -19,4 +19,5 @@ public class MainUISetting : MonoBehaviour
     public InventoryUI inventoryUI;
     public ResourceUI resourceUI;
     public PlayerStatsUI playerStatsUI;
+    public NotifyUI notifyUI;
 }

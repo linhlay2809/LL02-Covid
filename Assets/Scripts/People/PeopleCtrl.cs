@@ -9,6 +9,7 @@ public class PeopleCtrl : MainBehaviour
     public PeopleInfected peopleInfected;
     public PeopleTreated peopleTreated;
     public PeopleInfo peopleInfo;
+    public PeopleNavigationController peopleNavCtrl;
 
     protected override void LoadComponents()
     {
@@ -18,6 +19,7 @@ public class PeopleCtrl : MainBehaviour
         LoadPeopleInfected();
         LoadPeopleTreated();
         LoadPeopleInfo();
+        LoadPeopleNavCtrl();
     }
 
     protected virtual void LoadPeopleHealthInfo()
@@ -49,5 +51,11 @@ public class PeopleCtrl : MainBehaviour
         if (peopleInfo != null) return;
         this.peopleInfo = GetComponent<PeopleInfo>();
         Debug.Log(transform.name + ": LoadPeopleInfo");
+    }
+    protected virtual void LoadPeopleNavCtrl()
+    {
+        if (peopleNavCtrl != null) return;
+        this.peopleNavCtrl = GetComponent<PeopleNavigationController>();
+        Debug.Log(transform.name + ": LoadPeopleNavCtrl");
     }
 }

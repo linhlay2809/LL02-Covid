@@ -15,6 +15,7 @@ public class GameManager : MainBehaviour
     [SerializeField] protected List<MedicineInfo> medicineInfos;
     [SerializeField] protected List<PotionInfos> potionInfos;
     [SerializeField] protected List<VaccineInfo> vaccineInfos;
+    [SerializeField] protected List<NotifySO> notifys;
 
 
     private static GameManager instance;
@@ -100,19 +101,14 @@ public class GameManager : MainBehaviour
     // Get vaccineInfos với VaccineName truyền vào
     public VaccineInfo GetVaccineInfoByName(VaccineName name)
     {
-        switch ((int)name)
+        return (int)name switch
         {
-            case 0:
-                return vaccineInfos[0];
-            case 1:
-                return vaccineInfos[1];
-            case 2:
-                return vaccineInfos[2];
-            case 3:
-                return vaccineInfos[3];
-            default:
-                return null;
-        }
+            0 => vaccineInfos[0],
+            1 => vaccineInfos[1],
+            2 => vaccineInfos[2],
+            3 => vaccineInfos[3],
+            _ => null,
+        };
     }
 
     // Thêm số lượng thuốc
@@ -154,6 +150,18 @@ public class GameManager : MainBehaviour
         base.Awake();
         if (instance != null) return;
         instance = this;
+    }
+
+    public void FindAndShowNotify(NotifyName notifyName)
+    {
+        foreach (var nt in notifys)
+        {
+            if (nt.notifyName == notifyName)
+            {
+                MainUISetting.Instance.notifyUI.ShowNotify(nt.content);
+                return;
+            }
+        }
     }
 
 }

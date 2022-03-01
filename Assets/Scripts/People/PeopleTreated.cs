@@ -50,6 +50,7 @@ public class PeopleTreated : MainBehaviour
         this.timeToDeath = this.defaultTTDeath;
     }
 
+    // Cộng thêm timeToDeath với giá trị truyền vào
     public void AddTimeToDeath(float value)
     {
         this.timeToDeath += value;
@@ -71,8 +72,17 @@ public class PeopleTreated : MainBehaviour
     public void BeTreated()
     {
 
-        if (peopleCtrl.peopleHealthInfo.GetBeTreated()) return;
-        if (peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus) return;
+        if (peopleCtrl.peopleHealthInfo.GetBeTreated())
+        {
+            GameManager.Instance.FindAndShowNotify(NotifyName.hasTreated); // Hiện thông báo khi đang được chữa trị
+            return;
+        }
+        if (peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus)
+        {
+            GameManager.Instance.FindAndShowNotify(NotifyName.notInfected); // Hiện thông báo khi không bị nhiễm
+            return;
+        }
+
         int medicineIndex = (int) peopleCtrl.peopleHealthInfo.VirusName - 1; // Lấy index của virusname -1
         // Trả về khi sô lượng thuốc <= 0
         if (GameManager.Instance.GetMedicineInfo((int)peopleCtrl.peopleHealthInfo.VirusName - 1).quantily <= 0) return;
@@ -89,9 +99,16 @@ public class PeopleTreated : MainBehaviour
     // Được tiêm vaccine
     public void Vaccination(VaccineInfo vaccineInfo)
     {
-        if ((int)this.peopleCtrl.peopleHealthInfo.NumberOfDoses == 2) return; // Trả về khi tiêm đủ 2 mũi
-        if (this.peopleCtrl.peopleHealthInfo.VirusName != VirusName.noVirus) return; // Trả về khi đã bị nhiễm bệnh
-        
+        if ((int)this.peopleCtrl.peopleHealthInfo.NumberOfDoses == 2)
+        {
+            GameManager.Instance.FindAndShowNotify(NotifyName.maxNumOfDose); // Hiện thông báo khi tiêm đủ 2 mũi
+            return;
+        }
+        if (this.peopleCtrl.peopleHealthInfo.VirusName != VirusName.noVirus)
+        {
+            GameManager.Instance.FindAndShowNotify(NotifyName.hasInfected); // Hiện thông báo khi đã bị nhiễm bệnh
+            return;
+        }
         if (this.Vaccine == VaccineName.noVaccine || this.Vaccine == vaccineInfo.vaccineName)
         {
             this.Vaccine = vaccineInfo.vaccineName;

@@ -6,7 +6,7 @@ public class WaypointNavigator : MonoBehaviour
 {
     PeopleNavigationController controller;
     public Waypoint currentWaypoint;
-    int direction;
+    public int direction;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class WaypointNavigator : MonoBehaviour
 
     void Update()
     {
-        if (controller.reachedDestination)
+        if (controller.ReachedDestination())
         {
             bool shouldBranch = false;
 

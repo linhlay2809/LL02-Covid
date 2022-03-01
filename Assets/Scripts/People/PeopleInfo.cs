@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +7,7 @@ public class PeopleInfo : MainBehaviour
 {
     [SerializeField] protected Sprite avatar;
     [SerializeField] protected int id;
+    [SerializeField] protected bool isTested = false;
 
     public Sprite GetAvatarPeople()
     {
@@ -17,6 +18,13 @@ public class PeopleInfo : MainBehaviour
     {
         return this.id;
     }
+    // Lấy và gán giá trị isTested
+    public bool IsTested
+    {
+        get { return this.isTested; }
+        set { this.isTested = value; }
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();

@@ -1,23 +1,49 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PeopleNavigationController : MonoBehaviour
 {
     [SerializeField] protected Animator animator;
+    [SerializeField] protected float movementSpeed;
+    [SerializeField] protected float rotationSpeed;
+    [SerializeField] protected float stopDistance;
+    [SerializeField] protected Vector3 destination;
+    [SerializeField] protected bool reachedDestination;
+    [SerializeField] protected bool isMoving = true;
+    protected Rigidbody rb;
 
-    public float movementSpeed;
-    public float rotationSpeed;
-    public float stopDistance;
-    public Vector3 destination;
-    public bool reachedDestination;
+    // Lấy giá trị isMoving
+    public bool IsMoving()
+    {
+        return this.isMoving;
+    }
+
+    // Lấy giá trị reachedDestination
+    public bool ReachedDestination()
+    {
+        return this.reachedDestination;
+    }
+
+    // Set giá trị bool cho isMoving
+    public void SetIsMoving(bool value)
+    {
+        this.isMoving = value;
+        rb.isKinematic = !value;
+    }
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        if (!IsMoving()) 
+        {
+            animator.SetFloat("Speed_f", 0f);
+            return;
+        }
         if (transform.position != destination)
         {
             Vector3 destinationDirection = destination - transform.position;
@@ -27,24 +53,18 @@ public class PeopleNavigationController : MonoBehaviour
 
             if (destinationDistance >= stopDistance)
             {
-                reachedDestination = false;
+                this.reachedDestination = false;
                 Quaternion targetRotation = Quaternion.LookRotation(destinationDirection);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-                transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+                transform.Translate(movementSpeed * Time.deltaTime * Vector3.forward);
             }
             else
             {
-                reachedDestination = true;
+                this.reachedDestination = true;
             }
             
-            if (transform.position != Vector3.zero)
-            {
                 animator.SetFloat("Speed_f", 0.3f);
-            }
-            else
-            {
-                animator.SetFloat("Speed_f", 0f);
-            }
+
             
         }
     }
@@ -52,6 +72,6 @@ public class PeopleNavigationController : MonoBehaviour
     public void SetDestination(Vector3 destination)
     {
         this.destination = destination;
-        reachedDestination = false;
+        this.reachedDestination = false;
     }
 }

@@ -18,7 +18,7 @@ public class InfoPeopleUI : MainBehaviour
     }
 
     // Gán peopleCtrl khi interact
-    public void SetInfoNewPeople(PeopleCtrl peopleCtrl)
+    public void SetNewInfoPeople(PeopleCtrl peopleCtrl)
     {
         this.peopleCtrl = peopleCtrl;
 
