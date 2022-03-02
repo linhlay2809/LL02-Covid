@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class InfoPeopleUI : MainBehaviour
 {
@@ -53,11 +54,18 @@ public class InfoPeopleUI : MainBehaviour
     // Bật InfoUI
     public void TurnOnDisplayPeople()
     {
+        this.transform.localScale = Vector2.one;
         this.gameObject.SetActive(true);
+        this.transform.DOLocalMoveX(727, 0.5f).From(new Vector2(1167, 0));
     }
 
     // Tắt InfoUI
     public void TurnOffDisplayPeople()
+    {
+        this.transform.DOScale(Vector2.zero, 0.3f).SetEase(Ease.InBack).OnComplete(DisableInfoUI);
+    }
+
+    void DisableInfoUI()
     {
         this.gameObject.SetActive(false);
         if (this.peopleCtrl == null) return;
