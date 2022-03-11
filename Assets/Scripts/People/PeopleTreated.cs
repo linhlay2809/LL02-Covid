@@ -74,12 +74,12 @@ public class PeopleTreated : MainBehaviour
 
         if (peopleCtrl.peopleHealthInfo.GetBeTreated())
         {
-            GameManager.Instance.FindAndShowNotify(NotifyName.hasTreated); // Hiện thông báo khi đang được chữa trị
+            MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.hasTreated); // Hiện thông báo khi đang được chữa trị
             return;
         }
         if (peopleCtrl.peopleHealthInfo.VirusName == VirusName.noVirus)
         {
-            GameManager.Instance.FindAndShowNotify(NotifyName.notInfected); // Hiện thông báo khi không bị nhiễm
+            MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.notInfected); // Hiện thông báo khi không bị nhiễm
             return;
         }
 
@@ -101,12 +101,12 @@ public class PeopleTreated : MainBehaviour
     {
         if ((int)this.peopleCtrl.peopleHealthInfo.NumberOfDoses == 2)
         {
-            GameManager.Instance.FindAndShowNotify(NotifyName.maxNumOfDose); // Hiện thông báo khi tiêm đủ 2 mũi
+            MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.maxNumOfDose); // Hiện thông báo khi tiêm đủ 2 mũi
             return;
         }
         if (this.peopleCtrl.peopleHealthInfo.VirusName != VirusName.noVirus)
         {
-            GameManager.Instance.FindAndShowNotify(NotifyName.hasInfected); // Hiện thông báo khi đã bị nhiễm bệnh
+            MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.hasInfected); // Hiện thông báo khi đã bị nhiễm bệnh
             return;
         }
         if (this.Vaccine == VaccineName.noVaccine || this.Vaccine == vaccineInfo.vaccineName)

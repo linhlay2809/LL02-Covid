@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class DoctorInteraction : MainBehaviour
 {
@@ -11,6 +12,7 @@ public class DoctorInteraction : MainBehaviour
     [SerializeField] protected Transform canvas;
     [SerializeField] protected GameObject interactUI;
     [SerializeField] protected GameObject hintUI;
+    [SerializeField] bool isInteract = false;
 
     [SerializeField] protected List<Button> buttons;
     [SerializeField] protected List<Button> vaccineButtons;
@@ -84,6 +86,8 @@ public class DoctorInteraction : MainBehaviour
     }
     protected void Start()
     {
+        interactUI.SetActive(false);
+
         vaccineIR = interactUI.transform.GetChild(1).gameObject; // Gán object vaccineInteractUI vào inspector khi startGame
         buttons[2].onClick.AddListener(() => OnOffVaccineInteract());
     }
@@ -95,11 +99,9 @@ public class DoctorInteraction : MainBehaviour
     }
     protected override void Update()
     {
-        // Bit shift the index of the layer (8) to get a bit mask
+
         int layerMask = 1 << 8;
 
-        // This would cast rays only against colliders in layer 8.
-        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
         layerMask = ~layerMask;
         
         Vector3 hitPos = transform.position + new Vector3(0f, 1.5f, 0f); // Vị trí bắt đầu RayCast
@@ -128,12 +130,15 @@ public class DoctorInteraction : MainBehaviour
     // Bật tắt cửa sổ InteractUI
     protected void EnableInteractUI(PeopleCtrl peopleCtrl)
     {
+        isInteract = !isInteract;
 
-        interactUI.SetActive(!interactUI.activeInHierarchy);
         vaccineIR.SetActive(false);
-        if (interactUI.activeInHierarchy)
+        if (isInteract)
         {
             Debug.Log("Add listen");
+            interactUI.SetActive(true);
+            DOTweenModuleUI.DOSizeDelta(interactUI.GetComponent<RectTransform>(), new Vector2(350, 350), 0.2f);
+
             MainUISetting.Instance.infoPeopleUI.TurnOffDisplayPeople();
             doctorCtrl.controller.SwitchIsMoving();
 
@@ -146,6 +151,8 @@ public class DoctorInteraction : MainBehaviour
         else
         {
             Debug.Log("Remove");
+            DOTweenModuleUI.DOSizeDelta(interactUI.GetComponent<RectTransform>(), new Vector2(350, 150), 0.1f);
+
             peopleCtrl.peopleNavCtrl.SetIsMoving(true);
 
             doctorCtrl.controller.SwitchIsMoving();
@@ -167,20 +174,21 @@ public class DoctorInteraction : MainBehaviour
     // Test Covid cho bệnh nhân
     protected void TestCovid(PeopleCtrl peopleCtrl)
     {
-        peopleCtrl.peopleInfo.IsTested = true;
-
-        MainUISetting.Instance.infoPeopleUI.TurnOnDisplayPeople();
-        MainUISetting.Instance.infoPeopleUI.SetNewInfoPeople(peopleCtrl);
+        MainUISetting.Instance.infoPeopleUI.TurnOnDisplayPeople(peopleCtrl);
 
         EnableInteractUI(peopleCtrl);
+
+        if (peopleCtrl.peopleInfo.IsTested()) return;
+        peopleCtrl.peopleInfo.SetIsTested(true);
+        MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10);
     }
 
     // Tiêm vaccine cho bệnh nhân
     protected void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
     {
-        if (!peopleCtrl.peopleInfo.IsTested)
+        if (!peopleCtrl.peopleInfo.IsTested())
         {
-            GameManager.Instance.FindAndShowNotify(NotifyName.notTestedVirus);
+            MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.notTestedVirus);
             return;
         }
 
@@ -195,9 +203,9 @@ public class DoctorInteraction : MainBehaviour
     // Chữa trị cho bệnh nhân
     protected void TreatToPeople(PeopleCtrl peopleCtrl)
     {
-        if (!peopleCtrl.peopleInfo.IsTested)
+        if (!peopleCtrl.peopleInfo.IsTested())
         {
-            GameManager.Instance.FindAndShowNotify(NotifyName.notTestedVirus);
+            MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.notTestedVirus);
             return;
         }
         peopleCtrl.peopleTreated.BeTreated();

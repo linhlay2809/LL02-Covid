@@ -22,8 +22,6 @@ public class InfoPeopleUI : MainBehaviour
     public void SetNewInfoPeople(PeopleCtrl peopleCtrl)
     {
         this.peopleCtrl = peopleCtrl;
-
-        MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10);
     }
 
     protected override void Update()
@@ -52,17 +50,20 @@ public class InfoPeopleUI : MainBehaviour
     }
 
     // Bật InfoUI
-    public void TurnOnDisplayPeople()
+    public void TurnOnDisplayPeople(PeopleCtrl peopleCtrl)
     {
+        SetNewInfoPeople(peopleCtrl);
+
         this.transform.localScale = Vector2.one;
         this.gameObject.SetActive(true);
+        DOTween.Kill(this,gameObject);
         this.transform.DOLocalMoveX(727, 0.5f).From(new Vector2(1167, 0));
     }
 
     // Tắt InfoUI
     public void TurnOffDisplayPeople()
     {
-        this.transform.DOScale(Vector2.zero, 0.3f).SetEase(Ease.InBack).OnComplete(DisableInfoUI);
+        this.transform.DOLocalMoveX(1167, 0.3f).OnComplete(DisableInfoUI);
     }
 
     void DisableInfoUI()

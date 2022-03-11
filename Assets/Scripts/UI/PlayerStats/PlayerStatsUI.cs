@@ -21,15 +21,13 @@ public class PlayerStatsUI : MonoBehaviour
     public void ReduceMoraleStat(float value)
     {
         DOTweenModuleUI.DOValue(energySlider, moraleSlider.value - value, 1);
-        
+
+        ReduceArrow(moraleArrow);
     }
 
     // Giảm chỉ số năng lượng
     public void ReduceEnergyStat(float value)
     {
-        energyArrow.transform.DOScaleX(1, 0f);
-        energyArrow.gameObject.SetActive(true);
-        energyArrow.color = Color.red;
         float moraleValue = moraleSlider.value;
         if (moraleValue <= 20)
             DOTweenModuleUI.DOValue(energySlider, energySlider.value - value - lowLevelValue, 1);
@@ -37,32 +35,46 @@ public class PlayerStatsUI : MonoBehaviour
             DOTweenModuleUI.DOValue(energySlider, energySlider.value - value - mediumLevelValue, 1);
         else
             DOTweenModuleUI.DOValue(energySlider, energySlider.value - value, 1);
-        energyArrow.transform.DOLocalMoveX(200, 0.3f).SetEase(Ease.InQuart)
-            .From(new Vector2(213, energyArrow.transform.position.y)).SetLoops(4, LoopType.Yoyo).OnComplete(DisableEnergyArrow);
-    }
-    void DisableEnergyArrow()
-    {
-        energyArrow.gameObject.SetActive(false);
-    }
-    //void DisableMoraleArrow()
-    //{
-    //    moraleArrow.gameObject.SetActive(false);
-    //}
 
+        ReduceArrow(energyArrow);
+    }
 
     // Tăng chỉ số tinh thần
     public void IncreaseMoraleStat(float value)
     {
         DOTweenModuleUI.DOValue(energySlider, moraleSlider.value + value, 1);
+
+        IncreaseArrow(moraleArrow);
     }
 
     // Tăng chỉ số năng lượng
     public void IncreaseEnergyStat(float value)
     {
-        energyArrow.transform.DOScaleX(-1, 0f);
-        energyArrow.color = Color.green;
         DOTweenModuleUI.DOValue(energySlider, energySlider.value + value, 1);
-        energyArrow.transform.DOLocalMoveX(213, 0.3f).SetEase(Ease.InQuart)
-            .From(new Vector2(200, energyArrow.transform.position.y)).SetLoops(4, LoopType.Yoyo).OnComplete(DisableEnergyArrow);
+
+        IncreaseArrow(energyArrow);
+    }
+
+    void ReduceArrow(Image arrow)
+    {
+        arrow.transform.DOScaleX(1, 0f);
+        arrow.color = Color.red;
+        arrow.gameObject.SetActive(true);
+        arrow.transform.DOLocalMoveX(200, 0.3f).SetEase(Ease.InQuart)
+            .From(new Vector2(213, arrow.transform.position.y)).SetLoops(4, LoopType.Yoyo).OnComplete(() => DisableArrow(arrow));
+    }
+    void IncreaseArrow(Image arrow)
+    {
+        arrow.transform.DOScaleX(-1, 0f);
+        arrow.color = Color.green;
+        arrow.gameObject.SetActive(true);
+        arrow.transform.DOLocalMoveX(213, 0.3f).SetEase(Ease.InQuart)
+            .From(new Vector2(200, arrow.transform.position.y)).SetLoops(4, LoopType.Yoyo).OnComplete(() => DisableArrow(arrow));
+    }
+
+    // Disable arrow
+    void DisableArrow(Image arrow)
+    {
+        arrow.gameObject.SetActive(false);
     }
 }
