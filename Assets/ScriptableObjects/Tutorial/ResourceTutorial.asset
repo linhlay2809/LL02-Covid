@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: ResourceTutorial
   m_EditorClassIdentifier: 
   tutorialName: 3
-  tutorialImg: {fileID: 0}
-  tittle: 
-  content: 
+  tutorialImg: {fileID: 21300000, guid: c6ba2443a6235994eab107a17e85602c, type: 3}
+  tittle: "T\xE0i nguy\xEAn"
+  content: "Hi\u1EC3n th\u1ECB c\xE1c t\xE0i nguy\xEAn v\xE0 th\xF4ng tin trong th\xE0nh
+    ph\u1ED1\nGhi ch\xFA: Di chu\u1ED9t v\xE0o \u0111\u1EC3 hi\u1EC3n th\u1ECB th\xF4ng
+    tin chi ti\u1EBFt"
   appeared: 0

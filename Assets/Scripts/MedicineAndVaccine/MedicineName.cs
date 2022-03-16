@@ -31,6 +31,6 @@ public enum VaccineName
 public enum PotionName
 {
     // Lọ thuốc
-    energyPotion = 0,
-    moralePotion = 1
+    moralePotion = 0,
+    energyPotion = 1
 }

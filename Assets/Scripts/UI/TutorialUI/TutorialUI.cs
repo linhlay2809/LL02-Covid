@@ -43,7 +43,7 @@ public class TutorialUI : MainBehaviour
     // Hi?n th? thông báo
     public void ShowTutorial(Sprite sprite, string tittle, string content)
     {
-        isSpace = false;
+        this.isSpace = false;
         this.transform.DOKill();
         this.gameObject.SetActive(true);
 
@@ -67,6 +67,7 @@ public class TutorialUI : MainBehaviour
     // ?n thông báo
     protected void HideTutorial()
     {
+        this.isSpace = false;
         this.gameObject.transform.DOScale(Vector2.zero, 0.4f).SetEase(Ease.InBack).OnComplete(DisableTutorial);
     }
 

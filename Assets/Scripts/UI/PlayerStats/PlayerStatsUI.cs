@@ -17,6 +17,18 @@ public class PlayerStatsUI : MonoBehaviour
     [Tooltip("Năng lượng hao tốn cộng thêm khi mức tinh thần <= 20")]
     [SerializeField] protected float lowLevelValue;
 
+    public bool IsMaxMorale()
+    {
+        if(moraleSlider.value == 100) return true;
+        else return false;
+    }
+
+    public bool IsMaxEnergy()
+    {
+        if (energySlider.value == 100) return true;
+        else return false;
+    }
+
     // Giảm chỉ số tinh thần
     public void ReduceMoraleStat(float value)
     {

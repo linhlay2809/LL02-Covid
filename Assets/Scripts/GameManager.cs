@@ -12,9 +12,7 @@ public class GameManager : MainBehaviour
     public List<Sprite> avatarPeople = new List<Sprite>();
 
     [SerializeField] protected List<VirusInfo> virusInfos;
-    [SerializeField] protected List<MedicineInfo> medicineInfos;
-    [SerializeField] protected List<PotionInfos> potionInfos;
-    [SerializeField] protected List<VaccineInfo> vaccineInfos;
+
 
     private static GameManager instance;
 
@@ -25,100 +23,12 @@ public class GameManager : MainBehaviour
         base.LoadComponents();
         LoadAvatarPeople();
         LoadVirusInfos();
-        LoadMedicineInfos();
-        LoadPotionInfos();
-        LoadVaccineInfos();
     }
     
     // Lấy giá trị maxInfectionRate
     public float GetMaxIR(int index)
     {
         return virusInfos[index].maxInfectionRate;
-    }
-
-    // Load VaccineInfos trên inspector
-    protected void LoadVaccineInfos()
-    {
-        if (vaccineInfos.Count != 0) return;
-        for (int i = 0; i < Enum.GetNames(typeof(VaccineName)).Length; i++)
-        {
-            VaccineInfo info = new VaccineInfo() 
-            { 
-                vaccineName = (VaccineName)Enum.ToObject(typeof(VaccineName), i) 
-            };
-            vaccineInfos.Add(info);
-        }
-    }
-
-    // Load MedicineInfo trên inspecter
-    protected void LoadMedicineInfos()
-    {
-        if (medicineInfos.Count != 0) return;
-        for (int i = 0; i < Enum.GetNames(typeof(MedicineName)).Length; i++)
-        {
-            MedicineInfo info = new MedicineInfo() 
-            { 
-                medicineName = (MedicineName)Enum.ToObject(typeof(MedicineName), i) 
-            };
-            medicineInfos.Add(info);
-        }
-    }
-    
-    // Load PotionInfo trên inspecter
-    protected void LoadPotionInfos()
-    {
-        if (potionInfos.Count != 0) return;
-        for (int i = 0; i < Enum.GetNames(typeof(PotionName)).Length; i++)
-        {
-            PotionInfos info = new PotionInfos() 
-            { 
-                potionName = (PotionName)Enum.ToObject(typeof(PotionName), i) 
-            };
-            potionInfos.Add(info);
-        }
-    }
-
-    // Get MedicineInfo
-    public PotionInfos GetPotionInfo(int potionIndex)
-    {
-        return potionInfos[potionIndex];
-    }
-    
-    // Get MedicineInfo
-    public MedicineInfo GetMedicineInfo(int medicineIndex)
-    {
-        return medicineInfos[medicineIndex];
-    }
-
-    // Get VaccineInfo
-    public VaccineInfo GetVaccineInfo(int vaccineIndex)
-    {
-        return vaccineInfos[vaccineIndex];
-    }
-
-    //// Get vaccineInfos với VaccineName truyền vào
-    //public VaccineInfo GetVaccineInfoByName(VaccineName name)
-    //{
-    //    return (int)name switch
-    //    {
-    //        0 => vaccineInfos[0],
-    //        1 => vaccineInfos[1],
-    //        2 => vaccineInfos[2],
-    //        3 => vaccineInfos[3],
-    //        _ => null,
-    //    };
-    //}
-
-    // Thêm số lượng thuốc
-    public void AddMedicineQuantily(int medicineIndex, int value)
-    {
-        this.medicineInfos[medicineIndex].quantily += value;
-    }
-
-    // Thêm số lượng vaccine
-    public void AddVaccineQuantily(int medicineIndex, int value)
-    {
-        this.vaccineInfos[medicineIndex].quantily += value;
     }
 
     // Load VirusInfo trên inspector
@@ -150,10 +60,8 @@ public class GameManager : MainBehaviour
         instance = this;
     }
 
-
-
     protected void Start()
     {
-        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.mission);
+        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.playerStats);
     }
 }

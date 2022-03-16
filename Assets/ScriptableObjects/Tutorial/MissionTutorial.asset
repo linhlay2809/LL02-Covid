@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialName: 0
   tutorialImg: {fileID: 21300000, guid: 5973f6a80a6985e4080ff40238fd396b, type: 3}
-  tittle: duaad
-  content: adwadwadwa
+  tittle: "Nhi\u1EC7m v\u1EE5"
+  content: "B\u1EA1n l\xE0 m\u1ED9t b\xE1c s\u0129.\nNhi\u1EC7m v\u1EE5 c\u1EE7a
+    b\u1EA1n l\xE0 gi\xFAp ng\u01B0\u1EDDi d\xE2n trong th\xE0nh ph\u1ED1 chi\u1EBFn
+    th\u1EAFng d\u1ECBch covid.\n----B\u1EA1n c\xF3 10 ng\xE0y \u0111\u1EC3 ho\xE0n
+    th\xE0nh nhi\u1EC7m v\u1EE5----"
   appeared: 0

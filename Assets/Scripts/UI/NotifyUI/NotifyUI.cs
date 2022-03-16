@@ -10,6 +10,9 @@ public enum NotifyName
     hasInfected = 2,
     notInfected = 3,
     hasTreated = 4,
+    maxMorale = 5,
+    maxEnergy = 6,
+    notEnough = 7,
 
 }
 public class NotifyUI : MonoBehaviour
@@ -18,6 +21,11 @@ public class NotifyUI : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI notifyText;
     [Header("NotifyOS List")]
     [SerializeField] protected List<NotifySO> notifys;
+
+    private void Start()
+    {
+        DisableNotify();
+    }
     // Hiển thị thông báo
     public void ShowNotify(string content)
     {
@@ -25,7 +33,7 @@ public class NotifyUI : MonoBehaviour
         this.gameObject.SetActive(true);
         notifyText.text = content;
         this.gameObject.transform.localScale = Vector2.zero;
-        this.gameObject.transform.DOScale(Vector2.one, 0.5f).SetEase(Ease.OutBack).OnComplete(HideNotify);
+        this.gameObject.transform.DOScale(Vector2.one, 0.5f).SetEase(Ease.OutBack).OnComplete(HideNotify).From(Vector2.zero);
     }
 
     // Ẩn thông báo

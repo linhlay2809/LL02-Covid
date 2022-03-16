@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialName: 1
   tutorialImg: {fileID: 21300000, guid: 5973f6a80a6985e4080ff40238fd396b, type: 3}
-  tittle: 
-  content: 
-  appeared: 0
+  tittle: "Ch\u1EC9 s\u1ED1 nh\xE2n v\u1EADt"
+  content: "- Ch\u1EC9 s\u1ED1 tinh th\u1EA7n: Gi\u1ED1ng nh\u01B0 m\xE1u c\u1EE7a
+    nh\xE2n v\u1EADt, khi ng\u01B0\u1EDDi d\xE2n t\u1EED vong hay l\xE0m vi\u1EC7c
+    qu\xE1 s\u1EE9c ch\u1EC9 s\u1ED1 n\xE0y s\u1EBD b\u1ECB s\u1EE5t gi\u1EA3m.\n-
+    Ch\u1EC9 s\u1ED1 n\u0103ng l\u01B0\u1EE3ng: Khi t\u01B0\u01A1ng t\xE1c v\u1EDBi
+    m\u1ED9t \u0111\u1ED1i t\u01B0\u1EE3ng, ch\u1EC9 s\u1ED1 n\xE0y s\u1EBD b\u1ECB
+    gi\u1EA3m.\nGhi ch\xFA:\n+ Tinh th\u1EA7n c\xE0ng th\u1EA5p, n\u0103ng l\u01B0\u1EE3ng
+    ti\xEAu hao c\xE0ng cao.\n+ B\u1ED5 sung ch\u1EC9 s\u1ED1 b\u1EB1ng c\xE1ch ngh\u1EC9
+    ng\u01A1i v\xE0 u\u1ED1ng thu\u1ED1c t\u0103ng l\u1EF1c."
+  appeared: 1

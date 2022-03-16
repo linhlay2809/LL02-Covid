@@ -9,6 +9,7 @@ public class DoctorInteraction : MainBehaviour
 {
     [HideInInspector]
     public DoctorCtrl doctorCtrl;
+    [SerializeField] protected LayerMask whatIsInteract;
     [SerializeField] protected Transform canvas;
     [SerializeField] protected GameObject interactUI;
     [SerializeField] protected GameObject hintUI;
@@ -99,21 +100,21 @@ public class DoctorInteraction : MainBehaviour
     }
     protected override void Update()
     {
-
-        int layerMask = 1 << 8;
-
-        layerMask = ~layerMask;
-        
         Vector3 hitPos = transform.position + new Vector3(0f, 1.5f, 0f); // Vị trí bắt đầu RayCast
 
-        if (Physics.Raycast(hitPos, transform.TransformDirection(Vector3.forward), out hit, 2f, layerMask))
+        if (Physics.Raycast(hitPos, transform.TransformDirection(Vector3.forward), out hit, 2f, whatIsInteract))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
-                if (peopleCtrl == null) return;
-                peopleCtrl.peopleNavCtrl.SetIsMoving(false);
-                EnableInteractUI(peopleCtrl);
+                if (hit.collider.CompareTag("Store")) Debug.Log("Store Hit");
+                if (hit.collider.CompareTag("People"))
+                {
+                    PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
+                    if (peopleCtrl == null) return;
+                    peopleCtrl.peopleNavCtrl.SetIsMoving(false);
+                    EnableInteractUI(peopleCtrl);
+                }
+                
             }
             hintUI.SetActive(true);
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
@@ -137,16 +138,16 @@ public class DoctorInteraction : MainBehaviour
         {
             Debug.Log("Add listen");
             interactUI.SetActive(true);
-            DOTweenModuleUI.DOSizeDelta(interactUI.GetComponent<RectTransform>(), new Vector2(350, 350), 0.2f);
+            DOTweenModuleUI.DOSizeDelta(interactUI.GetComponent<RectTransform>(), new Vector2(350, 350), 0.2f).From(new Vector2(350, 150));
 
             MainUISetting.Instance.infoPeopleUI.TurnOffDisplayPeople();
             doctorCtrl.controller.SwitchIsMoving();
 
             buttons[0].onClick.AddListener(() => TestCovid(peopleCtrl));
             buttons[1].onClick.AddListener(() => TreatToPeople(peopleCtrl));
-            vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(1), peopleCtrl));
-            vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(2), peopleCtrl));
-            vaccineButtons[2].onClick.AddListener(() => VaccineToPeople(GameManager.Instance.GetVaccineInfo(3), peopleCtrl));
+            vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(MainUISetting.Instance.inventoryUI.GetVaccineInfo(1), peopleCtrl));
+            vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(MainUISetting.Instance.inventoryUI.GetVaccineInfo(2), peopleCtrl));
+            vaccineButtons[2].onClick.AddListener(() => VaccineToPeople(MainUISetting.Instance.inventoryUI.GetVaccineInfo(3), peopleCtrl));
         }
         else
         {

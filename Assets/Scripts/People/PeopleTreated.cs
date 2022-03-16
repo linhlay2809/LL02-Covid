@@ -85,13 +85,11 @@ public class PeopleTreated : MainBehaviour
 
         int medicineIndex = (int) peopleCtrl.peopleHealthInfo.VirusName - 1; // Lấy index của virusname -1
         // Trả về khi sô lượng thuốc <= 0
-        if (GameManager.Instance.GetMedicineInfo((int)peopleCtrl.peopleHealthInfo.VirusName - 1).quantily <= 0) return;
+        if (MainUISetting.Instance.inventoryUI.GetMedicineInfo((int)peopleCtrl.peopleHealthInfo.VirusName - 1).quantily <= 0) return;
 
         this.peopleCtrl.peopleHealthInfo.SetBeingTreated(true);
 
-        GameManager.Instance.AddMedicineQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
-
-        MainUISetting.Instance.inventoryUI.DisplayIventory();
+        MainUISetting.Instance.inventoryUI.AddMedicineQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
 
         MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10); // Giảm chỉ số năng lượng
     }
@@ -115,9 +113,7 @@ public class PeopleTreated : MainBehaviour
             this.SetReduceInfectionRate(vaccineInfo.protectionRate);
 
             this.peopleCtrl.peopleHealthInfo.NumberOfDoses += 1; // Thêm số mũi tiêm 
-            GameManager.Instance.AddVaccineQuantily((int)vaccineInfo.vaccineName, -1); // Cập nhật số lượng vaccine
-
-            MainUISetting.Instance.inventoryUI.DisplayIventory();
+            MainUISetting.Instance.inventoryUI.AddVaccineQuantily((int)vaccineInfo.vaccineName, -1); // Cập nhật số lượng vaccine
 
             MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10); // Giảm chỉ số năng lượng
         }
