@@ -35,6 +35,7 @@ public class PeopleNavigationController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        this.movementSpeed = Random.Range(1.75f, 2.25f);
     }
 
     void Update()
