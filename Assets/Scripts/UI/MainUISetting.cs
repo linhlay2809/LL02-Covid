@@ -21,4 +21,5 @@ public class MainUISetting : MonoBehaviour
     public PlayerStatsUI playerStatsUI;
     public NotifyUI notifyUI;
     public TutorialUI tutorialUI;
+    public MedicineStoreUI medicineStoreUI;
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InventoryUI : MainBehaviour
 {
+    [SerializeField] protected int money;
     [SerializeField] protected List<Item> items;
     [SerializeField] protected List<Item> potionItems;
 
@@ -89,6 +90,7 @@ public class InventoryUI : MainBehaviour
     /*---------------------------------------------------
       -----------     Get set các biến      ----------------- 
       ---------------------------------------------------*/
+
 
     // Get MedicineInfo
     public PotionInfos GetPotionInfo(int potionIndex)

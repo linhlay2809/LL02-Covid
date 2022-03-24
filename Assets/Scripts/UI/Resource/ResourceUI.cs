@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ResourceUI : MainBehaviour
 {
+    [SerializeField] protected int money;
     [SerializeField] protected Resource moneyRes;
     [SerializeField] protected Resource infectionRateRes;
     [SerializeField] protected Resource numberOfPeopleRes;
@@ -11,11 +12,24 @@ public class ResourceUI : MainBehaviour
     [SerializeField] protected float waitingTime;
     float currentTime = 2f;
 
+    protected void Start()
+    {
+        DisplayMoney();
+    }
     protected override void Update()
     {
         Timer();
     }
-
+    public int GetMoney()
+    {
+        return this.money;
+    }
+    // Thêm số tiền
+    public void AddMoney(int value)
+    {
+        this.money += value;
+        DisplayMoney();
+    }
     // Bộ đếm thời gian
     protected void Timer() // Gọi hàm sau waitingTime
     {
@@ -24,6 +38,7 @@ public class ResourceUI : MainBehaviour
             currentTime = Time.time + waitingTime;
             DisplayIRRes();
             DisplayNumberOfPeo();
+            DisplayMoney();
         }
     }
 
@@ -36,5 +51,9 @@ public class ResourceUI : MainBehaviour
     protected void DisplayNumberOfPeo()
     {
         numberOfPeopleRes.SetResText(PeopleManager.Instance.GetAllPeople().ToString());
+    }
+    protected void DisplayMoney()
+    {
+        moneyRes.SetResText(GetMoney() + " $");
     }
 }

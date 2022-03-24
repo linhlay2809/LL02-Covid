@@ -106,7 +106,15 @@ public class DoctorInteraction : MainBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (hit.collider.CompareTag("Store")) Debug.Log("Store Hit");
+                if (hit.collider.CompareTag("NPC"))
+                {
+                    Funtion funtion = hit.collider.GetComponent<Funtion>();
+                    if (funtion == null) return;
+                    funtion.ToggleFuntion();
+                }
+
+
+                    
                 if (hit.collider.CompareTag("People"))
                 {
                     PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
@@ -132,7 +140,7 @@ public class DoctorInteraction : MainBehaviour
     protected void EnableInteractUI(PeopleCtrl peopleCtrl)
     {
         isInteract = !isInteract;
-
+        
         vaccineIR.SetActive(false);
         if (isInteract)
         {

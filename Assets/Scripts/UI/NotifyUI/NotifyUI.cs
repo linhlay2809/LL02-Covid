@@ -13,6 +13,7 @@ public enum NotifyName
     maxMorale = 5,
     maxEnergy = 6,
     notEnough = 7,
+    notEnoughMoney = 8,
 
 }
 public class NotifyUI : MonoBehaviour
@@ -22,12 +23,8 @@ public class NotifyUI : MonoBehaviour
     [Header("NotifyOS List")]
     [SerializeField] protected List<NotifySO> notifys;
 
-    private void Start()
-    {
-        DisableNotify();
-    }
     // Hiển thị thông báo
-    public void ShowNotify(string content)
+    protected void ShowNotify(string content)
     {
         this.transform.DOKill();
         this.gameObject.SetActive(true);
@@ -56,7 +53,7 @@ public class NotifyUI : MonoBehaviour
         {
             if (nt.notifyName == notifyName)
             {
-                MainUISetting.Instance.notifyUI.ShowNotify(nt.content);
+                ShowNotify(nt.content);
                 return;
             }
         }

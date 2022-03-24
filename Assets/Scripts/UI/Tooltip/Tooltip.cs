@@ -36,7 +36,10 @@ public class Tooltip : MainBehaviour
         int headerLength = headerField.text.Length;
         int contentLength = contentField.text.Length;
 
-        layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
+        if (headerLength > characterWrapLimit || contentLength > characterWrapLimit)
+            layoutElement.enabled = true;
+        else
+            layoutElement.enabled = false;
 
     }
     
@@ -46,8 +49,10 @@ public class Tooltip : MainBehaviour
         {
             int headerLength = headerField.text.Length;
             int contentLength = contentField.text.Length;
-
-            layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
+            if (headerLength > characterWrapLimit || contentLength > characterWrapLimit)
+                layoutElement.enabled = true;
+            else
+                layoutElement.enabled = false;
         }
 
         Vector2 position = Input.mousePosition;

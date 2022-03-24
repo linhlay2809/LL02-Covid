@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5134cf97330a949a6c465a00810562, type: 3}
+  m_Name: MoralePotionIS
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 50e09c5722ca4e84c8349f9e991fa6f4, type: 3}
+  typeName: "L\u1ECD thu\u1ED1c tinh th\u1EA7n"
+  price: 100
+  isMedicine: 0
+  isVaccine: 0
+  isPotion: 1
+  type: 0
