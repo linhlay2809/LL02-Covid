@@ -42,7 +42,7 @@ public class ItemStore : MonoBehaviour
     protected void DisplayInfo()
     {
         icon.sprite = itemStore.icon;
-        nameText.text = itemStore.name;
+        nameText.text = itemStore.typeName;
         priceText.text = itemStore.price + "$";
     }
 }

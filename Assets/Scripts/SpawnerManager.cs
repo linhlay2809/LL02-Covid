@@ -6,7 +6,7 @@ public class SpawnerManager : MonoBehaviour
 {
 
     [SerializeField] protected GameObject wayPoint;
-    [SerializeField] protected GameObject peoplePrefab;
+    [SerializeField] protected GameObject[] peoplePrefabs;
     [SerializeField] protected int peopleToSpawn;
     void Start()
     {
@@ -18,7 +18,7 @@ public class SpawnerManager : MonoBehaviour
         int current = 0;
         while (current < peopleToSpawn)
         {
-            GameObject obj = Instantiate(peoplePrefab);
+            GameObject obj = Instantiate(peoplePrefabs[Random.Range(0,peoplePrefabs.Length)]);
             Transform child = wayPoint.transform.GetChild(Random.Range(0, wayPoint.transform.childCount - 1));
             obj.GetComponent<WaypointNavigator>().currentWaypoint = child.GetComponent<Waypoint>();
             obj.transform.position = child.position;

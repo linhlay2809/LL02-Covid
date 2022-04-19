@@ -14,7 +14,7 @@ public class PeopleHealthInfo : MainBehaviour
 
     [Header("Death Rate Details")] [Tooltip("Tỷ lệ tử vong")]
     [SerializeField] protected float deathRate;
-    [SerializeField] protected float waitingTime;[Space]
+    [SerializeField] protected float waitingTime = 1f;[Space]
     [Tooltip("Đang chữa trị")]
     [SerializeField] protected bool beingTreated = false;
     protected float rateToDeath;

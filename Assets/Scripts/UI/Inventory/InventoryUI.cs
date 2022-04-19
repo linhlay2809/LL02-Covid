@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class InventoryUI : MainBehaviour
 {
-    [SerializeField] protected int money;
     [SerializeField] protected List<Item> items;
     [SerializeField] protected List<Item> potionItems;
 

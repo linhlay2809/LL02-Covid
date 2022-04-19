@@ -29,10 +29,11 @@ public class PeopleInfected : MainBehaviour
         return this.maxInfectionRate;
     }
 
-    // Gán giá trị truyền vào cho maxInfectionRate
+    // Tính toán tỷ lệ IR tối đa
     public void SetMaxInfectionRate(float index)
     {
-        this.maxInfectionRate = index - this.peopleCtrl.peopleTreated.GetReduceInfectionRate() * (int)peopleCtrl.peopleHealthInfo.NumberOfDoses;
+        this.maxInfectionRate = index - this.peopleCtrl.peopleTreated.GetReduceInfectionRate() 
+                                * (int)peopleCtrl.peopleHealthInfo.NumberOfDoses;
     }
 
     
@@ -44,10 +45,9 @@ public class PeopleInfected : MainBehaviour
         if (ratio < infectionRate) 
         {
             this.peopleCtrl.peopleHealthInfo.VirusName = virusName;
-
             SetMaxInfectionRate(GameManager.Instance.GetMaxIR((int)virusName) );
-            peopleCtrl.peopleTreated.AddTimeToDeath(this.peopleCtrl.peopleTreated.GetReduceInfectionRate() * (int)peopleCtrl.peopleHealthInfo.NumberOfDoses);
-
+            peopleCtrl.peopleTreated.AddTimeToDeath(this.peopleCtrl.peopleTreated.GetReduceInfectionRate() 
+                                                    * (int)peopleCtrl.peopleHealthInfo.NumberOfDoses);
             Debug.LogWarning(transform.name + " is infected virus "+ virusName);
         }
     }

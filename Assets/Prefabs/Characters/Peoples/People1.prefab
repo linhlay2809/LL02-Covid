@@ -553,7 +553,7 @@ MonoBehaviour:
   peopleCtrl: {fileID: 6688339202542525907}
   exclamationIcon: {fileID: 6330717204744311595}
   cameraMain: {fileID: 0}
-  avatar: {fileID: 0}
+  avatar: {fileID: 21300000, guid: 1c5a9c8e9c0b3c84a95c40265bd8690a, type: 3}
   id: 0
   isTested: 0
 --- !u!114 &4342140918610618528

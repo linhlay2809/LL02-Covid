@@ -9,19 +9,21 @@ public class GameManager : MainBehaviour
     [HideInInspector] public List<string> strCovidList = new List<string>() { "No Virus", "Delta Virus", "Alpha Virus", "Beta Virus", "Gamma Virus" };
     [HideInInspector] public List<string> strVaccineList = new List<string>() { "No Vaccine", "Pfizer", "Astra Zeneca", "Vero Cell" };
     [HideInInspector] public List<string> strDoseList = new List<string>() { "Zero Dose", "One Dose", "Two Dose" };
-    public List<Sprite> avatarPeople = new List<Sprite>();
 
     [SerializeField] protected List<VirusInfo> virusInfos;
 
-
     private static GameManager instance;
-
     public static GameManager Instance => instance;
+    protected override void Awake()
+    {
+        base.Awake();
+        if (instance != null) return;
+        instance = this;
+    }
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        LoadAvatarPeople();
         LoadVirusInfos();
     }
     
@@ -42,26 +44,11 @@ public class GameManager : MainBehaviour
 
         }
     }
-    protected void LoadAvatarPeople()
-    {
-        if (avatarPeople.Count != 0) return;
-        for (int i = 0; i < 10; i++)
-        {
-            Sprite sprite = Resources.Load<Sprite>("AvatarPeople/AvatarPeople" + i);
-            if (sprite == null) break;
-            avatarPeople.Add(sprite);
-        }
-    }
 
-    protected override void Awake()
-    {
-        base.Awake();
-        if (instance != null) return;
-        instance = this;
-    }
+   
 
     protected void Start()
     {
-        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.playerStats);
+        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.controller);
     }
 }

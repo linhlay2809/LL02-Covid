@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeopleNavigationController : MonoBehaviour
+public class PeopleNavigationController : MainBehaviour
 {
     [SerializeField] protected Animator animator;
-    [SerializeField] protected float movementSpeed;
-    [SerializeField] protected float rotationSpeed;
-    [SerializeField] protected float stopDistance;
+    [SerializeField] protected float movementSpeed = 2f;
+    [SerializeField] protected float rotationSpeed = 120f;
+    [SerializeField] protected float stopDistance = 2.5f;
     [SerializeField] protected Vector3 destination;
     [SerializeField] protected bool reachedDestination;
     [SerializeField] protected bool isMoving = true;
@@ -31,14 +31,26 @@ public class PeopleNavigationController : MonoBehaviour
         this.isMoving = value;
         rb.isKinematic = !value;
     }
-    private void Awake()
+    protected override void LoadComponents()
+    {
+        base.LoadComponents();
+        LoadAnimatior();
+    }
+
+    protected override void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
         this.movementSpeed = Random.Range(1.75f, 2.25f);
     }
 
-    void Update()
+    protected void LoadAnimatior()
+    {
+        if (animator != null) return;
+        animator = GetComponent<Animator>();
+        Debug.Log(transform.name + ": LoadAnimator");
+    }
+
+    protected override void Update()
     {
         if (!IsMoving()) 
         {
@@ -65,8 +77,6 @@ public class PeopleNavigationController : MonoBehaviour
             }
             
                 animator.SetFloat("Speed_f", 0.3f);
-
-            
         }
     }
 

@@ -111,9 +111,8 @@ public class DoctorInteraction : MainBehaviour
                     Funtion funtion = hit.collider.GetComponent<Funtion>();
                     if (funtion == null) return;
                     funtion.ToggleFuntion();
+                    doctorCtrl.controller.SwitchIsMoving();
                 }
-
-
                     
                 if (hit.collider.CompareTag("People"))
                 {

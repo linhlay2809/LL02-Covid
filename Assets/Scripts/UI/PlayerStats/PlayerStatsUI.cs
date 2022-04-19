@@ -32,7 +32,7 @@ public class PlayerStatsUI : MonoBehaviour
     // Giảm chỉ số tinh thần
     public void ReduceMoraleStat(float value)
     {
-        DOTweenModuleUI.DOValue(energySlider, moraleSlider.value - value, 1);
+        DOTweenModuleUI.DOValue(moraleSlider, moraleSlider.value - value, 1);
 
         ReduceArrow(moraleArrow);
     }
@@ -54,7 +54,7 @@ public class PlayerStatsUI : MonoBehaviour
     // Tăng chỉ số tinh thần
     public void IncreaseMoraleStat(float value)
     {
-        DOTweenModuleUI.DOValue(energySlider, moraleSlider.value + value, 1);
+        DOTweenModuleUI.DOValue(moraleSlider, moraleSlider.value + value, 1);
 
         IncreaseArrow(moraleArrow);
     }

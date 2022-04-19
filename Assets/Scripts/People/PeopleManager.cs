@@ -41,6 +41,12 @@ public class PeopleManager : MainBehaviour
         float allIR = 0f; 
         foreach (PeopleCtrl peopleCtrl in peopleCtrls)
         {
+            if (peopleCtrl == null)
+            {
+                peopleCtrls.Remove(peopleCtrl);
+                break;
+            }
+
             float maxIR = peopleCtrl.peopleInfected.GetMaxInfectionRate();
             if (maxIR == 0) continue;
             else

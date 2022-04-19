@@ -12,7 +12,7 @@ public class PeopleTreated : MainBehaviour
     [Header("Time To Death Details")]
     [Tooltip("Thời gian tử vong")]
     [SerializeField] protected float timeToDeath;
-    [SerializeField] protected float defaultTTDeath;
+    [SerializeField] protected float defaultTTDeath = 5f;
 
     protected override void LoadComponents()
     {
