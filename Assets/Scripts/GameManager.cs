@@ -17,8 +17,14 @@ public class GameManager : MainBehaviour
     protected override void Awake()
     {
         base.Awake();
-        if (instance != null) return;
+        if (instance != null) 
+        {
+            Debug.Log("Dont destroy");
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     protected override void LoadComponents()

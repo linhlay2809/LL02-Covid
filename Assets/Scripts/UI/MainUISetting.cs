@@ -11,7 +11,10 @@ public class MainUISetting : MonoBehaviour
 
     protected void Awake()
     {
-        if (instance != null) return;
+        if (instance != null)
+        {
+            return;
+        }
         instance = this;
     }
 
