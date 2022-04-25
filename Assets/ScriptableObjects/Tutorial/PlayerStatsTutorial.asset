@@ -24,3 +24,4 @@ MonoBehaviour:
     ti\xEAu hao c\xE0ng cao.\n+ B\u1ED5 sung ch\u1EC9 s\u1ED1 b\u1EB1ng c\xE1ch ngh\u1EC9
     ng\u01A1i v\xE0 u\u1ED1ng thu\u1ED1c t\u0103ng l\u1EF1c."
   appeared: 1
+  nextTutorial: {fileID: 11400000, guid: 27465583897c40f4ca03196a4696d86a, type: 2}

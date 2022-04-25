@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class OptionUI : MonoBehaviour
+public class OptionUI : MainBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Toggle toggleTutorial;
+
+    protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
+        this.LoadToggleTu();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LoadToggleTu()
     {
-        
+        if (toggleTutorial != null) return;
+        this.toggleTutorial = transform.Find("ToggleTutorial").GetComponent<Toggle>();
+        Debug.Log(transform.name + " Load Toggle");
     }
 }

@@ -17,3 +17,4 @@ MonoBehaviour:
   tittle: "\u0110i\u1EC1u khi\u1EC3n"
   content: "\u0110i\u1EC1u khi\u1EC3n\n- Di chuy\u1EC3n: W A S D"
   appeared: 1
+  nextTutorial: {fileID: 11400000, guid: c2b97f81c863a7345871f55c06f9a3ef, type: 2}

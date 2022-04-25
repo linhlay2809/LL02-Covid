@@ -27,6 +27,7 @@ public class TutorialUI : MainBehaviour
 
 
     [Header("TutorialOS List")]
+    [SerializeField] protected TutorialSO currentTutorial;
     [SerializeField] protected List<TutorialSO> tutorials;
 
     protected override void Update()
@@ -40,7 +41,7 @@ public class TutorialUI : MainBehaviour
         }
        
     }
-    // Hi?n th? thông báo
+    // Hi?n th? h??ng d?n
     public void ShowTutorial(Sprite sprite, string tittle, string content)
     {
         this.isSpace = false;
@@ -59,22 +60,34 @@ public class TutorialUI : MainBehaviour
 
     IEnumerator ShowPressSpace()
     {
+        pressSpace.SetActive(false);
         yield return new WaitForSeconds(2f);
         pressSpace.SetActive(true);
         isSpace = true;
     }
 
-    // ?n thông báo
+    // ?n h??ng d?n
     protected void HideTutorial()
     {
         this.isSpace = false;
-        this.gameObject.transform.DOScale(Vector2.zero, 0.4f).SetEase(Ease.InBack).OnComplete(DisableTutorial);
+        if(this.currentTutorial.nextTutorial == null)
+            this.gameObject.transform.DOScale(Vector2.zero, 0.4f).SetEase(Ease.InExpo).OnComplete(DisableTutorial);
+        else
+            this.gameObject.transform.DOScale(Vector2.zero, 0.4f).SetEase(Ease.InExpo).OnComplete(NextTutorial);
     }
 
     // Disable Tutorial
     protected void DisableTutorial()
     {
         this.gameObject.SetActive(false);
+    }
+
+    // Show next tutorial cua tutorialSO
+    protected void NextTutorial()
+    {
+        var nextTutorial = this.currentTutorial.nextTutorial;
+        this.currentTutorial = nextTutorial;
+        this.ShowTutorial(nextTutorial.tutorialImg, nextTutorial.tittle, nextTutorial.content);
     }
 
     // Rìm và hi?n Tutorial v?i TutorialName truy?n vào
@@ -85,6 +98,7 @@ public class TutorialUI : MainBehaviour
             if (tu.tutorialName == tutorialName)
             {
                 if (tu.appeared) return;
+                this.currentTutorial = tu;
                 tu.appeared = true;
                 ShowTutorial(tu.tutorialImg, tu.tittle, tu.content);
                 return;
@@ -92,5 +106,12 @@ public class TutorialUI : MainBehaviour
         }
     }
     
+    public void ActiveTutorial(bool value)
+    {
+        foreach (TutorialSO tutorialSO in tutorials)
+        {
+            tutorialSO.appeared = value;
+        }
+    }
 }
 
