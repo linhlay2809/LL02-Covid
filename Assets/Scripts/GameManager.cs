@@ -63,4 +63,9 @@ public class GameManager : MainBehaviour
         this.tutorial = value;
     }
 
+    protected override void Update()
+    {
+        
+    }
+
 }
