@@ -11,7 +11,9 @@ public class TutorialSO : ScriptableObject
     public string tittle;
     [TextArea()]
     public string content;
-    [Tooltip("?ã xu?t hi?n")]
+    [Tooltip("Da xuat hien")]
     public bool appeared;
+
+    public TutorialSO nextTutorial;
 }
 

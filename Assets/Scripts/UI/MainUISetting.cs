@@ -25,4 +25,5 @@ public class MainUISetting : MonoBehaviour
     public NotifyUI notifyUI;
     public TutorialUI tutorialUI;
     public MedicineStoreUI medicineStoreUI;
+    public WinnerUI winnerUI;
 }

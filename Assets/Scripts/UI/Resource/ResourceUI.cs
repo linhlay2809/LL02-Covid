@@ -10,6 +10,7 @@ public class ResourceUI : MainBehaviour
     [SerializeField] protected Resource numberOfPeopleRes;
 
     [SerializeField] protected float waitingTime;
+    [SerializeField] protected bool stoped = false;
     float currentTime = 2f;
 
     protected void Start()
@@ -33,6 +34,7 @@ public class ResourceUI : MainBehaviour
     // Bộ đếm thời gian
     protected void Timer() // Gọi hàm sau waitingTime
     {
+        if (stoped) return;
         if (Time.time > currentTime)
         {
             currentTime = Time.time + waitingTime;
@@ -45,7 +47,9 @@ public class ResourceUI : MainBehaviour
     // Hiển thị thông số tỷ lệ lây nhiễm lên ResourceUI
     protected void DisplayIRRes()
     {
-        infectionRateRes.SetResText(PeopleManager.Instance.GetAllInfectionRate().ToString("0.##") + " / 100");
+        float allIR = PeopleManager.Instance.GetAllInfectionRate();
+        if (allIR <= 0) stoped = true;
+        infectionRateRes.SetResText(allIR.ToString("0.##") + " / 100");
     }
 
     protected void DisplayNumberOfPeo()

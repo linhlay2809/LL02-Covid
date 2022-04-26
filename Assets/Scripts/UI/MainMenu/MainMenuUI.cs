@@ -5,12 +5,22 @@ using UnityEngine;
 
 public class MainMenuUI : MainBehaviour
 {
+    public OptionUI optionUI;
+
     [SerializeField] protected AudioSource audioSource;
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadAudioScource();
+        this.LoadOptionUI();
+    }
+
+    private void LoadOptionUI()
+    {
+        if (optionUI != null) return;
+        this.optionUI = transform.Find("OptionUI").GetComponent<OptionUI>();
+        Debug.Log(transform.name + " Load OptionUI");
     }
 
     private void LoadAudioScource()
@@ -28,5 +38,10 @@ public class MainMenuUI : MainBehaviour
     public void ChangeVFXVolume(float value)
     {
         SoundManager.instance.vfxVolume = value;
+    }
+    
+    public void SaveToggleTu()
+    {
+       
     }
 }

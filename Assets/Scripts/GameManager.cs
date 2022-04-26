@@ -10,6 +10,7 @@ public class GameManager : MainBehaviour
     [HideInInspector] public List<string> strVaccineList = new List<string>() { "No Vaccine", "Pfizer", "Astra Zeneca", "Vero Cell" };
     [HideInInspector] public List<string> strDoseList = new List<string>() { "Zero Dose", "One Dose", "Two Dose" };
 
+    [SerializeField] protected bool tutorial;
     [SerializeField] protected List<VirusInfo> virusInfos;
 
     private static GameManager instance;
@@ -39,6 +40,12 @@ public class GameManager : MainBehaviour
         return virusInfos[index].maxInfectionRate;
     }
 
+    // Lấy giá trị bool tutorial
+    public bool GetTutorial()
+    {
+        return this.tutorial;
+    }
+
     // Load VirusInfo trên inspector
     protected void LoadVirusInfos()
     {
@@ -51,10 +58,14 @@ public class GameManager : MainBehaviour
         }
     }
 
-   
-
-    protected void Start()
+    public void SetTutorial(bool value)
     {
-        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.controller);
+        this.tutorial = value;
     }
+
+    protected override void Update()
+    {
+        
+    }
+
 }

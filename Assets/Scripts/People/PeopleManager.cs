@@ -53,8 +53,14 @@ public class PeopleManager : MainBehaviour
                 allIR += (peopleCtrl.peopleHealthInfo.InfectionRate / maxIR);
             
         }
-        return allIR * 100 / peopleCtrls.Count;
-        
+        float finalAllIR = allIR * 100 / peopleCtrls.Count;
+
+        if(finalAllIR <= 0)
+            MainUISetting.Instance.winnerUI.Winner();
+
+        return finalAllIR;
+
+
     }
 
     public int GetAllPeople()
