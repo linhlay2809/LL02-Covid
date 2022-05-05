@@ -16,5 +16,5 @@ MonoBehaviour:
   tutorialImg: {fileID: 21300000, guid: 32c279a30972721428fff5fa864ffda4, type: 3}
   tittle: "\u0110i\u1EC1u khi\u1EC3n"
   content: "\u0110i\u1EC1u khi\u1EC3n\n- Di chuy\u1EC3n: W A S D"
-  appeared: 1
-  nextTutorial: {fileID: 11400000, guid: c2b97f81c863a7345871f55c06f9a3ef, type: 2}
+  appeared: 0
+  nextTutorial: {fileID: 0}

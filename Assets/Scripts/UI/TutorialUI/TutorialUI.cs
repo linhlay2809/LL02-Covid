@@ -55,6 +55,7 @@ public class TutorialUI : MainBehaviour
         this.gameObject.transform.localScale = Vector2.zero;
         this.gameObject.transform.DOScale(Vector2.one, 0.5f).SetEase(Ease.OutBack);
 
+        SoundManager.Instance.Play("Tutorial");
         StartCoroutine(ShowPressSpace());
     }
 

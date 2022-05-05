@@ -12,6 +12,7 @@ public class TooltipTrigger : MainBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData eventData)
     {
         TooltipSystem.Show(content, header);
+        SoundManager.Instance.Play("Tooltip");
     }
 
     public void OnPointerExit(PointerEventData eventData)

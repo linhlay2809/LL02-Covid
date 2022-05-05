@@ -28,10 +28,10 @@ public class MenuUI : MainBehaviour
     public void PlayGame()
     {
         SwitchScreen.Instance.OpenSwitchScreen();
-        GameManager.Instance.SetTutorial(mainMenuUI.optionUI.toggleTutorial.isOn);
         
         StartCoroutine(LoadGame());
     }
+
     IEnumerator LoadGame()
     {
         yield return new WaitForSeconds(loadingDelayTime);
