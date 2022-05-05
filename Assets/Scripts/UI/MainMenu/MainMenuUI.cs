@@ -32,16 +32,19 @@ public class MainMenuUI : MainBehaviour
 
     public void ChangeMusicVolume(float value)
     {
-        SoundManager.instance.musicVolume = value;
+        SoundManager.Instance.musicVolume = value;
     }
     
     public void ChangeVFXVolume(float value)
     {
-        SoundManager.instance.vfxVolume = value;
+        SoundManager.Instance.vfxVolume = value;
     }
-    
-    public void SaveToggleTu()
+    public void MenuClickSound()
     {
-       
+        SoundManager.Instance.Play("MenuClick");
+    }
+    public void ToggleTutorial(bool value)
+    {
+        GameManager.Instance.SetTutorial(value);
     }
 }

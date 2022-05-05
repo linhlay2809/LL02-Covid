@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class PeopleInfo : MainBehaviour
 {
@@ -49,7 +50,12 @@ public class PeopleInfo : MainBehaviour
     public void SetIsTested(bool value)
     {
         this.isTested = value;
-        this.exclamationIcon.gameObject.SetActive(value); // Hiển thị dấu chấm than
+        ShowExclamationIcon();
+    }
+    protected void ShowExclamationIcon()
+    {
+        this.exclamationIcon.gameObject.SetActive(true); // Hiển thị dấu chấm than
+        this.exclamationIcon.transform.DOScale(Vector2.one, 0.8f).SetEase(Ease.OutBack).From(Vector2.zero);
     }
 
     protected override void LoadComponents()

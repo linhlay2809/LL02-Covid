@@ -43,9 +43,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc67c85d6cae774fa40e3ca234170b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicVolume: 1
+  vfxVolume: 1
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: MenuClick
+    clip: {fileID: 8300000, guid: 61899677404267747b0f6d9d83a28b30, type: 3}
+    volume: 0.25
+    pitch: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: Slider
+    clip: {fileID: 8300000, guid: 73d77cf99ae9a6b44843fa756425e576, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: Interact
+    clip: {fileID: 8300000, guid: 4b3215add0d429a4e8adc046f8395242, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: Tutorial
+    clip: {fileID: 8300000, guid: 5a8c82b21630ac8408d1d8e755356148, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: Notify
+    clip: {fileID: 8300000, guid: 29ef65d5ff629524dac2ee780325863c, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: Tooltip
+    clip: {fileID: 8300000, guid: 6b209aeb6a84ec54387b3ef7244a87ff, type: 3}
+    volume: 0.07
+    pitch: 1
+    isMusic: 0
+    source: {fileID: 0}
+  - name: ChillMusic
+    clip: {fileID: 8300000, guid: 6cf80146214fa2043beb89bd3980151c, type: 3}
+    volume: 1
+    pitch: 1
+    isMusic: 1
     source: {fileID: 0}
