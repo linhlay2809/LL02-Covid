@@ -31,6 +31,8 @@ public class NotifyUI : MonoBehaviour
         notifyText.text = content;
         this.gameObject.transform.localScale = Vector2.zero;
         this.gameObject.transform.DOScale(Vector2.one, 0.5f).SetEase(Ease.OutBack).OnComplete(HideNotify).From(Vector2.zero);
+
+        SoundManager.Instance.Play("Notify");
     }
 
     // Ẩn thông báo

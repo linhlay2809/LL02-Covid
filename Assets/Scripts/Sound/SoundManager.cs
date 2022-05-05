@@ -9,7 +9,8 @@ public class SoundManager : MonoBehaviour
 
     public Sound[] sounds;
     
-    public static SoundManager instance;
+    private static SoundManager instance;
+    public static SoundManager Instance => instance;
     void Awake()
     {
         foreach (Sound s in sounds)
@@ -39,11 +40,6 @@ public class SoundManager : MonoBehaviour
         s.source.Play();
     }
 
-    public void SaveVolume()
-    {
-        PlayerPrefs.SetFloat("MusicVolume", this.musicVolume);
-        PlayerPrefs.SetFloat("VFXVolume", this.vfxVolume);
-    }
     public void LoadVolume()
     {
         foreach (Sound s in sounds)

@@ -17,4 +17,5 @@ MonoBehaviour:
   tittle: "T\u01B0\u01A1ng t\xE1c"
   content: "Ti\u1EBFn t\u1EDBi \u0111\u1ED1i t\u01B0\u1EE3ng mu\u1ED1n t\u01B0\u01A1ng
     t\xE1c.\nNh\u1EA5n n\xFAt E \u0111\u1EC3 t\u01B0\u01A1ng t\xE1c"
-  appeared: 0
+  appeared: 1
+  nextTutorial: {fileID: 0}

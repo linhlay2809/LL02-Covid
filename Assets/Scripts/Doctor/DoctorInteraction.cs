@@ -106,6 +106,7 @@ public class DoctorInteraction : MainBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                InteractSound();
                 if (hit.collider.CompareTag("NPC"))
                 {
                     Funtion funtion = hit.collider.GetComponent<Funtion>();
@@ -176,12 +177,15 @@ public class DoctorInteraction : MainBehaviour
     // Bật tắt VaccineUI
     public void OnOffVaccineInteract()
     {
+        InteractSound();
         vaccineIR.SetActive(!vaccineIR.activeInHierarchy);
     }
 
     // Test Covid cho bệnh nhân
     protected void TestCovid(PeopleCtrl peopleCtrl)
     {
+        InteractSound();
+
         MainUISetting.Instance.infoPeopleUI.TurnOnDisplayPeople(peopleCtrl);
 
         EnableInteractUI(peopleCtrl);
@@ -194,6 +198,8 @@ public class DoctorInteraction : MainBehaviour
     // Tiêm vaccine cho bệnh nhân
     protected void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
     {
+        InteractSound();
+
         if (!peopleCtrl.peopleInfo.IsTested())
         {
             MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.notTestedVirus);
@@ -211,6 +217,8 @@ public class DoctorInteraction : MainBehaviour
     // Chữa trị cho bệnh nhân
     protected void TreatToPeople(PeopleCtrl peopleCtrl)
     {
+        InteractSound();
+
         if (!peopleCtrl.peopleInfo.IsTested())
         {
             MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.notTestedVirus);
@@ -222,5 +230,10 @@ public class DoctorInteraction : MainBehaviour
 
         
 
+    }
+
+    protected void InteractSound()
+    {
+        SoundManager.Instance.Play("Interact");
     }
 }

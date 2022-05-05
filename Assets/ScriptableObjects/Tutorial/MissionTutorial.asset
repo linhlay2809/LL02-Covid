@@ -19,5 +19,5 @@ MonoBehaviour:
     b\u1EA1n l\xE0 gi\xFAp ng\u01B0\u1EDDi d\xE2n trong th\xE0nh ph\u1ED1 chi\u1EBFn
     th\u1EAFng d\u1ECBch covid.\n----B\u1EA1n c\xF3 10 ng\xE0y \u0111\u1EC3 ho\xE0n
     th\xE0nh nhi\u1EC7m v\u1EE5----"
-  appeared: 0
+  appeared: 1
   nextTutorial: {fileID: 11400000, guid: d275bec8892aaa9419fe77c4830101c1, type: 2}

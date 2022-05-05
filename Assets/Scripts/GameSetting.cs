@@ -10,9 +10,12 @@ public class GameSetting : MainBehaviour
         if(SwitchScreen.Instance != null)
             SwitchScreen.Instance.CloseSwitchScreen();
         MainUISetting.Instance.tutorialUI.ActiveTutorial(!GameManager.Instance.GetTutorial());
+        
     }
     protected void Start()
     {
+        SoundManager.Instance.LoadVolume();
         MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.playerStats);
+        SoundManager.Instance.Play("ChillMusic");
     }
 }

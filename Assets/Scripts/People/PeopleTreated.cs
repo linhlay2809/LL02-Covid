@@ -92,6 +92,8 @@ public class PeopleTreated : MainBehaviour
         MainUISetting.Instance.inventoryUI.AddMedicineQuantily(medicineIndex, -1); // Cập nhật số lượng thuốc
 
         MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10); // Giảm chỉ số năng lượng
+
+        MainUISetting.Instance.resourceUI.AddMoney(50);
     }
 
     // Được tiêm vaccine
