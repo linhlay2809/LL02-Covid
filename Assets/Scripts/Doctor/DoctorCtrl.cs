@@ -8,6 +8,15 @@ public class DoctorCtrl : MainBehaviour
     public DoctorHealing doctorHealing;
     public DoctorInteraction doctorInteraction;
 
+    private static DoctorCtrl instance;
+    public static DoctorCtrl Instance => instance;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (instance != null) return;
+        instance = this;
+    }
     protected override void LoadComponents()
     {
         base.LoadComponents();
