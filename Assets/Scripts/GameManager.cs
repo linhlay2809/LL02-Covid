@@ -54,18 +54,12 @@ public class GameManager : MainBehaviour
         {
             VirusInfo info = new VirusInfo() { virusName= (VirusName)Enum.ToObject(typeof(VirusName), i)};
             virusInfos.Add(info);
-
         }
     }
 
     public void SetTutorial(bool value)
     {
         this.tutorial = value;
-    }
-
-    protected override void Update()
-    {
-        
     }
 
 }

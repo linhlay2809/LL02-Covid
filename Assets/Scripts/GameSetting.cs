@@ -15,7 +15,18 @@ public class GameSetting : MainBehaviour
     protected void Start()
     {
         SoundManager.Instance.LoadVolume();
-        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.playerStats);
+        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.mission);
         SoundManager.Instance.Play("ChillMusic");
+        Invoke("ShowInteractTutorial", 100f);
+        Invoke("ShowPlayerStatsTutorial", 20f);
+    }
+
+    protected void ShowInteractTutorial()
+    {
+        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.interact);
+    }
+    protected void ShowPlayerStatsTutorial()
+    {
+        MainUISetting.Instance.tutorialUI.FindAndShowTutorial(TutorialName.playerStats);
     }
 }

@@ -18,5 +18,5 @@ MonoBehaviour:
   content: "Hi\u1EC3n th\u1ECB c\xE1c t\xE0i nguy\xEAn v\xE0 th\xF4ng tin trong th\xE0nh
     ph\u1ED1\nGhi ch\xFA: Di chu\u1ED9t v\xE0o \u0111\u1EC3 hi\u1EC3n th\u1ECB th\xF4ng
     tin chi ti\u1EBFt"
-  appeared: 1
-  nextTutorial: {fileID: 11400000, guid: 4401cc001cb0b8649a0c9290110166a4, type: 2}
+  appeared: 0
+  nextTutorial: {fileID: 0}

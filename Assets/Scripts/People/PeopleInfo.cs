@@ -41,17 +41,16 @@ public class PeopleInfo : MainBehaviour
         return this.id;
     }
     // Lấy và gán giá trị isTested
-    public bool IsTested()
+    public bool IsTested
     {
-        return this.isTested;
+        get { return this.isTested; }
+        set 
+        { 
+            this.isTested = value;
+            ShowExclamationIcon();
+        }
     }
 
-    // Gan gia tri vao bien isTested
-    public void SetIsTested(bool value)
-    {
-        this.isTested = value;
-        ShowExclamationIcon();
-    }
     protected void ShowExclamationIcon()
     {
         this.exclamationIcon.gameObject.SetActive(true); // Hiển thị dấu chấm than

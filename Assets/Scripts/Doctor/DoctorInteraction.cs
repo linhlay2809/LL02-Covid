@@ -20,6 +20,14 @@ public class DoctorInteraction : MainBehaviour
 
     GameObject vaccineIR;
     RaycastHit hit;
+
+    // Button
+    private ButtonDoctorBase btntestCV; 
+    private ButtonDoctorBase btnTreat; 
+    private ButtonDoctorBase btnVaccine1; 
+    private ButtonDoctorBase btnVaccine2;
+    private ButtonDoctorBase btnVaccine3;
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -85,8 +93,19 @@ public class DoctorInteraction : MainBehaviour
         }
         Debug.Log(transform.name + ": LoadVaccineButtons");
     }
+
+    /// <summary>
+    /// Main code
+    /// </summary>
+
     protected void Start()
     {
+        btntestCV = buttons[0].GetComponent<ButtonDoctorBase>();
+        btnTreat = buttons[1].GetComponent<ButtonDoctorBase>();
+        btnVaccine1 = vaccineButtons[0].GetComponent<ButtonDoctorBase>();
+        btnVaccine2 = vaccineButtons[1].GetComponent<ButtonDoctorBase>();
+        btnVaccine3 = vaccineButtons[2].GetComponent<ButtonDoctorBase>();
+
         interactUI.SetActive(false);
 
         vaccineIR = interactUI.transform.GetChild(1).gameObject; // Gán object vaccineInteractUI vào inspector khi startGame
@@ -104,74 +123,67 @@ public class DoctorInteraction : MainBehaviour
 
         if (Physics.Raycast(hitPos, transform.TransformDirection(Vector3.forward), out hit, 2f, whatIsInteract))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                InteractSound();
-                if (hit.collider.CompareTag("NPC"))
-                {
-                    Funtion funtion = hit.collider.GetComponent<Funtion>();
-                    if (funtion == null) return;
-                    funtion.ToggleFuntion();
-                    doctorCtrl.controller.SwitchIsMoving();
-                }
-                    
-                if (hit.collider.CompareTag("People"))
-                {
-                    PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
-                    if (peopleCtrl == null) return;
-                    peopleCtrl.peopleNavCtrl.SetIsMoving(false);
-                    EnableInteractUI(peopleCtrl);
-                }
-                
-            }
             hintUI.SetActive(true);
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+
+            if (!Input.GetKeyDown(KeyCode.E)) return;
+            InteractSound();
+            if (hit.collider.CompareTag("NPC"))
+            {
+                NPCFuntionBase funtion = hit.collider.GetComponent<NPCFuntionBase>();
+                if (funtion == null) return;
+                funtion.ToggleFuntion();
+                doctorCtrl.controller.SwitchIsMoving();
+            }
+
+            if (hit.collider.CompareTag("People"))
+            {
+                PeopleCtrl peopleCtrl = hit.collider.GetComponent<PeopleCtrl>();
+                if (peopleCtrl == null) return;
+                peopleCtrl.peopleNavCtrl.SetIsMoving(false);
+                EnableInteractUI(peopleCtrl);
+            }
         }
         else
         {
             hintUI.SetActive(false);
             Debug.DrawRay(hitPos, transform.TransformDirection(Vector3.forward) * 2f, Color.white);
         }
-
-
     }
 
     // Bật tắt cửa sổ InteractUI
-    protected void EnableInteractUI(PeopleCtrl peopleCtrl)
+    public void EnableInteractUI(PeopleCtrl peopleCtrl)
     {
         isInteract = !isInteract;
-        
         vaccineIR.SetActive(false);
         if (isInteract)
         {
-            Debug.Log("Add listen");
             interactUI.SetActive(true);
             DOTweenModuleUI.DOSizeDelta(interactUI.GetComponent<RectTransform>(), new Vector2(350, 350), 0.2f).From(new Vector2(350, 150));
 
             MainUISetting.Instance.infoPeopleUI.TurnOffDisplayPeople();
             doctorCtrl.controller.SwitchIsMoving();
 
-            buttons[0].onClick.AddListener(() => TestCovid(peopleCtrl));
-            buttons[1].onClick.AddListener(() => TreatToPeople(peopleCtrl));
-            vaccineButtons[0].onClick.AddListener(() => VaccineToPeople(MainUISetting.Instance.inventoryUI.GetVaccineInfo(1), peopleCtrl));
-            vaccineButtons[1].onClick.AddListener(() => VaccineToPeople(MainUISetting.Instance.inventoryUI.GetVaccineInfo(2), peopleCtrl));
-            vaccineButtons[2].onClick.AddListener(() => VaccineToPeople(MainUISetting.Instance.inventoryUI.GetVaccineInfo(3), peopleCtrl));
+            SetDataButton(peopleCtrl);
         }
         else
         {
-            Debug.Log("Remove");
             DOTweenModuleUI.DOSizeDelta(interactUI.GetComponent<RectTransform>(), new Vector2(350, 150), 0.1f);
 
             peopleCtrl.peopleNavCtrl.SetIsMoving(true);
 
             doctorCtrl.controller.SwitchIsMoving();
-
-            buttons[0].onClick.RemoveAllListeners();
-            buttons[1].onClick.RemoveAllListeners();
-            vaccineButtons[0].onClick.RemoveAllListeners();
-            vaccineButtons[1].onClick.RemoveAllListeners();
-            vaccineButtons[2].onClick.RemoveAllListeners();
         }
+    }
+
+    // Set data cho cac doctor button
+    protected void SetDataButton(PeopleCtrl peopleCtrl)
+    {
+        btntestCV.SetDataPeoCtrl(peopleCtrl);
+        btnTreat.SetDataPeoCtrl(peopleCtrl);
+        btnVaccine1.SetDataVaccAndPeoCtrl(MainUISetting.Instance.inventoryUI.GetVaccineInfo(1), peopleCtrl);
+        btnVaccine2.SetDataVaccAndPeoCtrl(MainUISetting.Instance.inventoryUI.GetVaccineInfo(2), peopleCtrl);
+        btnVaccine3.SetDataVaccAndPeoCtrl(MainUISetting.Instance.inventoryUI.GetVaccineInfo(3), peopleCtrl);
     }
 
     // Bật tắt VaccineUI
@@ -179,57 +191,6 @@ public class DoctorInteraction : MainBehaviour
     {
         InteractSound();
         vaccineIR.SetActive(!vaccineIR.activeInHierarchy);
-    }
-
-    // Test Covid cho bệnh nhân
-    protected void TestCovid(PeopleCtrl peopleCtrl)
-    {
-        InteractSound();
-
-        MainUISetting.Instance.infoPeopleUI.TurnOnDisplayPeople(peopleCtrl);
-
-        EnableInteractUI(peopleCtrl);
-
-        if (peopleCtrl.peopleInfo.IsTested()) return;
-        peopleCtrl.peopleInfo.SetIsTested(true);
-        MainUISetting.Instance.playerStatsUI.ReduceEnergyStat(10);
-    }
-
-    // Tiêm vaccine cho bệnh nhân
-    protected void VaccineToPeople(VaccineInfo vaccineInfo, PeopleCtrl peopleCtrl)
-    {
-        InteractSound();
-
-        if (!peopleCtrl.peopleInfo.IsTested())
-        {
-            MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.notTestedVirus);
-            return;
-        }
-
-        // Trả về khi số lượng vaccine <= 0
-        if (vaccineInfo.quantily <= 0) return;
-
-        peopleCtrl.peopleTreated.Vaccination(vaccineInfo);
-
-        EnableInteractUI(peopleCtrl);
-    }
-
-    // Chữa trị cho bệnh nhân
-    protected void TreatToPeople(PeopleCtrl peopleCtrl)
-    {
-        InteractSound();
-
-        if (!peopleCtrl.peopleInfo.IsTested())
-        {
-            MainUISetting.Instance.notifyUI.FindAndShowNotify(NotifyName.notTestedVirus);
-            return;
-        }
-        peopleCtrl.peopleTreated.BeTreated();
-
-        EnableInteractUI(peopleCtrl);
-
-        
-
     }
 
     protected void InteractSound()
