@@ -5,7 +5,6 @@ using UnityEngine;
 public class DoctorCtrl : MainBehaviour
 {
     public PlayerController controller;
-    public DoctorHealing doctorHealing;
     public DoctorInteraction doctorInteraction;
 
     private static DoctorCtrl instance;
@@ -21,7 +20,6 @@ public class DoctorCtrl : MainBehaviour
     {
         base.LoadComponents();
         LoadController();
-        LoadDoctorHealing();
         LoadDoctorInteraction();
     }
 
@@ -31,14 +29,6 @@ public class DoctorCtrl : MainBehaviour
         if (controller != null) return;
         this.controller = GetComponent<PlayerController>();
         Debug.Log(transform.name + ": LoadPlayerController");
-    }
-
-    // Load LoadDoctorHealing trên inspector
-    protected void LoadDoctorHealing()
-    {
-        if (doctorHealing != null) return;
-        this.doctorHealing = GetComponent<DoctorHealing>();
-        Debug.Log(transform.name + ": LoadDoctorHealing");
     }
 
     // LoadDoctorInteract trên inspector

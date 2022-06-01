@@ -130,7 +130,7 @@ public class DoctorInteraction : MainBehaviour
             InteractSound();
             if (hit.collider.CompareTag("NPC"))
             {
-                Funtion funtion = hit.collider.GetComponent<Funtion>();
+                NPCFuntionBase funtion = hit.collider.GetComponent<NPCFuntionBase>();
                 if (funtion == null) return;
                 funtion.ToggleFuntion();
                 doctorCtrl.controller.SwitchIsMoving();
@@ -158,7 +158,6 @@ public class DoctorInteraction : MainBehaviour
         vaccineIR.SetActive(false);
         if (isInteract)
         {
-            Debug.Log("Add listen");
             interactUI.SetActive(true);
             DOTweenModuleUI.DOSizeDelta(interactUI.GetComponent<RectTransform>(), new Vector2(350, 350), 0.2f).From(new Vector2(350, 150));
 
@@ -169,7 +168,6 @@ public class DoctorInteraction : MainBehaviour
         }
         else
         {
-            Debug.Log("Remove");
             DOTweenModuleUI.DOSizeDelta(interactUI.GetComponent<RectTransform>(), new Vector2(350, 150), 0.1f);
 
             peopleCtrl.peopleNavCtrl.SetIsMoving(true);
